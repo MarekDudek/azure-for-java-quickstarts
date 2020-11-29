@@ -54,15 +54,19 @@
         <configuration>
           <schemaVersion>v2</schemaVersion>
           <subscriptionId>24e956c0-ba48-45c7-9add-4d903401f23b</subscriptionId>
+	  <!-- Application part -->
           <resourceGroup>spring-boot-1606686864961-rg</resourceGroup>
           <appName>spring-boot-1606686864961</appName>
           <pricingTier>B2</pricingTier>
           <region>westeurope</region>
+	  <!-- /Application part -->
+	  <!-- Runtime part -->
           <runtime>
             <os>Linux</os>
             <javaVersion>Java 8</javaVersion>
             <webContainer>Java SE</webContainer>
           </runtime>
+	  <!-- /Runtime part -->
           <deployment>
             <resources>
               <resource>

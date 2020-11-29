@@ -13,3 +13,9 @@ adds plugin with configuration, based on
 	* info from subscription read by `az login`
 	* questions asked
 verbatim, constants set
+
+
+To reformat pom.xml
+===================
+
+xmllint ./pom.xml > ./pom.xml.bak && mv pom.xml.bak pom.xml
