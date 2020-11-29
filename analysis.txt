@@ -23,3 +23,8 @@ displays subscriptions:
   }
 ]
 
+
+Delete resource group
+=====================
+
+az group delete --name <resource group name> --yes
