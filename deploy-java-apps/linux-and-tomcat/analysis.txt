@@ -1,0 +1,8 @@
+
+Cloned Spring Boot example web application. It has nothing Azure-specific.
+
+Maven Plugin for Azure Web Apps
+
+Goals
+	configure
+		adds Azure configuration, rewrites pom.xml
