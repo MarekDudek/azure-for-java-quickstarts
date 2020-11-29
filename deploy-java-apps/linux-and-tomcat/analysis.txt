@@ -6,3 +6,10 @@ Maven Plugin for Azure Web Apps
 Goals
 	configure
 		adds Azure configuration, rewrites pom.xml
+
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
+
+adds plugin with configuration, based on 
+	* info from subscription read by `az login`
+	* questions asked
+verbatim, constants set
