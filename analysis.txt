@@ -1,0 +1,25 @@
+
+Log into Azure with bash on local machine
+=========================================
+
+az login
+(browser opens, input credentials)
+displays subscriptions:
+
+[
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "718c9ed0-f927-4124-8ea8-4602e8c9905a",
+    "id": "24e956c0-ba48-45c7-9add-4d903401f23b",
+    "isDefault": true,
+    "managedByTenants": [],
+    "name": "My free subscription",
+    "state": "Enabled",
+    "tenantId": "718c9ed0-f927-4124-8ea8-4602e8c9905a",
+    "user": {
+      "name": "marek.dudek@gmail.com",
+      "type": "user"
+    }
+  }
+]
+
