@@ -25,9 +25,9 @@
         <configuration>
           <schemaVersion>v2</schemaVersion>
           <subscriptionId>24e956c0-ba48-45c7-9add-4d903401f23b</subscriptionId>
-          <resourceGroup>helloworld-1606773481120-rg</resourceGroup>
-          <appName>helloworld-1606773481120</appName>
-          <pricingTier>B2</pricingTier>
+          <resourceGroup>helloworld-webapp-rg</resourceGroup>
+          <appName>marek-dudek-helloworld-webapp</appName>
+          <pricingTier>B1</pricingTier>
           <region>westeurope</region>
           <runtime>
             <os>Linux</os>
