@@ -32,3 +32,13 @@ To deploy to Azure
 ==================
 
 mvn package azure-webapp:deploy
+
+Creates automatically if none exists
+	* resource group
+	* app service
+
+TODO
+====
+
+* check with Tomcat (war packaging)
+* configure authentication, based on description of plugin and examples
