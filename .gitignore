@@ -1,5 +1,4 @@
 *.swp
 *.iml
 **/.idea/
-
-deploy-java-apps/linux-and-tomcat/helloworld/target/
+**/target/
