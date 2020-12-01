@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 
 export AZ_RESOURCE_GROUP=java-postgres-rg
