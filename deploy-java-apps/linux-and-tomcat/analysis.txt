@@ -40,5 +40,11 @@ Creates automatically if none exists
 TODO
 ====
 
-* check with Tomcat (war packaging)
-* configure authentication, based on description of plugin and examples
+\/ check with Tomcat (war packaging)
+*  configure authentication, based on description of plugin and examples
+
+PostgreSQL
+==========
+
+user: demo_user
+pass: MarekDudek10#
