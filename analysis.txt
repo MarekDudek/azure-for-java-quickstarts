@@ -28,3 +28,25 @@ Delete resource group
 =====================
 
 az group delete --name <resource group name> --yes
+
+
+Tasks
+=====
+
+Done
+----
+
+* Java JAR and WAR apps deployed to App Service
+* PostgreSQL database set up
+* Logging configured
+
+
+To Do
+-----
+
+* Databases: Azure Cosmos and Azure SQL Database
+* Java and DB: JDBC, JPA, Spring Data
+* Migrate database using export and import
+* More logging options, lots of them
+* Scale up
+* Set up CI/CD
