@@ -49,4 +49,6 @@ To Do
 * Migrate database using export and import
 * More logging options, lots of them
 * Scale up
+* Scale out
+* Scale out manually or automatically
 * Set up CI/CD
