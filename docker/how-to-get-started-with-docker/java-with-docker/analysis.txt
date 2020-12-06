@@ -12,3 +12,10 @@ marekdudek/mdrepo:1.0
 
 docker tag spring-app-on-docker:my-tag marekdudek/mdrepo:1.0
 docker push marekdudek/mdrepo:1.0
+
+
+In Azure name/tag is 
+	marekdudek/mdrepo:1.0
+
+On App Services 8080 is automatically exposed as 80.
+On Azure Container Instances 8080 needs to be exposed explicitely.
