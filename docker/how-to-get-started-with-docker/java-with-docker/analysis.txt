@@ -3,7 +3,7 @@
 docker build . --tag spring-app-on-docker:my-tag
 
 # Running locally
-docker run --detach --publish 9090:80 spring-app-on-docker:my-tag
+docker run --detach --publish 9090:8080 spring-app-on-docker:my-tag
 
 # Sharing on Docker Hub
 
