@@ -1,2 +1,2 @@
 docker build . -t spring-boot-app
-docker run -d -p 8080:8080 spring-boot-app:latest
+docker run -d -p 9090:80 spring-boot-app:latest
