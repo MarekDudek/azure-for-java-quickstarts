@@ -4,7 +4,7 @@ import static java.lang.System.err;
 import static java.lang.System.out;
 import static java.lang.Thread.sleep;
 
-public final class Main {
+public final class Stepper {
 
     public static void main(String[] args) {
         out.println("Started");
