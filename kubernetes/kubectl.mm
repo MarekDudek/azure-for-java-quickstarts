@@ -57,5 +57,13 @@
 <node CREATED="1609448900808" ID="ID_825581083" MODIFIED="1609448914449" TEXT="kubectl expose deployment balanced --type=LoadBalancer --port=8080"/>
 </node>
 </node>
+<node CREATED="1609449589250" ID="ID_1477326275" MODIFIED="1609449592214" POSITION="left" TEXT="Resources">
+<node CREATED="1609449594618" ID="ID_1130042487" MODIFIED="1609449596574" TEXT="short names">
+<node CREATED="1609449609530" ID="ID_1912470147" MODIFIED="1609449610270" TEXT="kubectl api-resources"/>
+</node>
+<node CREATED="1609449915675" ID="ID_1198410579" MODIFIED="1609449918175" TEXT="describing">
+<node CREATED="1609449918939" ID="ID_317952609" MODIFIED="1609449938207" TEXT="kubectl describe &lt;short-name&gt; &lt;name&gt;?"/>
+</node>
+</node>
 </node>
 </map>
