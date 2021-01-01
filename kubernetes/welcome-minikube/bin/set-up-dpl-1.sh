@@ -5,9 +5,5 @@ IFS=$'\n\t'
 set -euox pipefail
 
 
-pushd ${THIS_DIR}
-
 kubectl create -f ../manifests/deployment-1.yaml
 kubectl create -f ../manifests/service-1.yaml
-
-popd

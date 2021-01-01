@@ -5,9 +5,5 @@ IFS=$'\n\t'
 set -euox pipefail
 
 
-pushd ${THIS_DIR}
-
 kubectl delete -f ../manifests/service-2.yaml
 kubectl delete -f ../manifests/deployment-2.yaml
-
-popd
