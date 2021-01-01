@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dpl-2
+  name: dpl-2
+  namespace: ns-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dpl-2
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: dpl-2
+    spec:
+      containers:
+      - image: k8s.gcr.io/echoserver:1.4
+        name: echoserver
+        resources: {}
+status: {}
