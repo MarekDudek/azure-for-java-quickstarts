@@ -3,7 +3,7 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: dpl-2
+    app: echoserver-loadbalancer
   name: service-2
 spec:
   ports:
@@ -11,7 +11,7 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: dpl-2
+    app: echoserver-loadbalancer
   type: LoadBalancer
 status:
   loadBalancer: {}

@@ -3,7 +3,7 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: dpl-1
+    app: echoserver-nodeport
   name: service-1
 spec:
   ports:
@@ -11,7 +11,7 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: dpl-1
+    app: echoserver-nodeport
   type: NodePort
 status:
   loadBalancer: {}

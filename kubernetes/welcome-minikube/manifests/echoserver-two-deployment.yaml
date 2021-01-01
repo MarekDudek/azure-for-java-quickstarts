@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: dpl-2
-  name: dpl-2
+    app: echoserver-loadbalancer
+  name: echoserver-loadbalancer
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: dpl-2
+      app: echoserver-loadbalancer
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: dpl-2
+        app: echoserver-loadbalancer
     spec:
       containers:
       - image: k8s.gcr.io/echoserver:1.4
