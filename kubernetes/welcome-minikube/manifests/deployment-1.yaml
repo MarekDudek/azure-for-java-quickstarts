@@ -5,7 +5,6 @@ metadata:
   labels:
     app: dpl-1
   name: dpl-1
-  namespace: test 
 spec:
   replicas: 1
   selector:
