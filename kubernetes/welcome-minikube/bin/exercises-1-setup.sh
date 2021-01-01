@@ -7,13 +7,23 @@ set -euox pipefail
 
 pushd ${THIS_DIR}
 
-kubectl create namespace ckad --dry-run=client -o yaml > ../manifests/ckad-namespace.yaml
-kubectl create -f ../manifests/ckad-namespace.yaml
+# 1
 
-kubectl run nginx --image=nginx:1.17.10 --port=80 --dry-run=client -o yaml > ../manifests/nginx-pod.yaml
-kubectl create -f ../manifests/nginx-pod.yaml --namespace=ckad 
+CKAD=../manifests/ckad-namespace.yaml
+kubectl create namespace ckad --dry-run=client -o yaml > ${CKAD}
+kubectl create -f ${CKAD}
 
+NGINX=../manifests/nginx-pod.yaml
+kubectl run nginx --image=nginx:1.17.10 --port=80 --dry-run=client -o yaml > ${NGINX}
+kubectl create --namespace=ckad -f ${NGINX} 
+
+# 2
 kubectl get pod nginx --namespace=ckad --output=wide
 kubectl describe pod nginx --namespace=ckad | grep "^IP:"
+
+# 3
+DATE_EVERY_SEC=../manifests/date-every-sec-pod.yaml
+kubectl run date-every-sec --image=busybox --port=8080 --dry-run=client -o yaml > ${DATE_EVERY_SEC} -- /bin/sh -c "while true; do date; sleep 1; done" 
+kubectl create --namespace=ckad -f ${DATE_EVERY_SEC}
 
 popd
