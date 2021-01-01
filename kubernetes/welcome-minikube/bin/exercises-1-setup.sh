@@ -13,4 +13,7 @@ kubectl create -f ../manifests/ckad-namespace.yaml
 kubectl run nginx --image=nginx:1.17.10 --port=80 --dry-run=client -o yaml > ../manifests/nginx-pod.yaml
 kubectl create -f ../manifests/nginx-pod.yaml --namespace=ckad 
 
+kubectl get pod nginx --namespace=ckad --output=wide
+kubectl describe pod nginx --namespace=ckad | grep "^IP:"
+
 popd

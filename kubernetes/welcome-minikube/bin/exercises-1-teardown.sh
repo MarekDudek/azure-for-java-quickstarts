@@ -7,7 +7,7 @@ set -euox pipefail
 
 pushd ${THIS_DIR}
 
-kubectl delete -f ../manifests/nginx-pod.yaml
+kubectl delete -f ../manifests/nginx-pod.yaml --namespace=ckad
 kubectl delete -f ../manifests/ckad-namespace.yaml
 
 popd
