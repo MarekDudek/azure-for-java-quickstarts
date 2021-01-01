@@ -10,7 +10,4 @@ pushd ${THIS_DIR}
 ./tear-down-dpl-1.sh
 ./tear-down-dpl-2.sh
 
-kubectl config use-context ctx-1
-kubectl delete -f ../manifests/ns-1.yaml
-
 popd

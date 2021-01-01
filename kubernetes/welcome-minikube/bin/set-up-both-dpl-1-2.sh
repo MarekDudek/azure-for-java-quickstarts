@@ -7,9 +7,6 @@ set -euox pipefail
 
 pushd ${THIS_DIR}
 
-kubectl config use-context ctx-1
-kubectl apply  -f ../manifests/ns-1.yaml
-
 ./set-up-dpl-1.sh
 ./set-up-dpl-2.sh
 

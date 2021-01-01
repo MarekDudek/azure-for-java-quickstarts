@@ -10,13 +10,18 @@ minikube delete --all
 
 minikube start
 
-kubectl config set-context ctx-1 --cluster=minikube --user=minikube --namespace=ns-1
+kubectl config set-context test --cluster=minikube --user=minikube --namespace=test
+kubectl config use-context test
+
+kubectl create -f ../manifests/test-namespace.yaml
 
 ./set-up-both-dpl-1-2.sh
 ./tear-down-both-dpl-1-2.sh
 
 kubectl config use-context minikube
-kubectl config delete-context ctx-1
+kubectl config delete-context test
+
+kubectl delete -f ../manifests/test-namespace.yaml
 
 minikube stop 
 

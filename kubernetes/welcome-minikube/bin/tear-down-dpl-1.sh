@@ -7,8 +7,6 @@ set -euox pipefail
 
 pushd ${THIS_DIR}
 
-kubectl config use-context ctx-1
-
 kubectl delete -f ../manifests/service-1.yaml
 kubectl delete -f ../manifests/deployment-1.yaml
 

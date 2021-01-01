@@ -7,8 +7,6 @@ set -euox pipefail
 
 pushd ${THIS_DIR}
 
-kubectl config use-context ctx-1
-
 kubectl create -f ../manifests/deployment-1.yaml
 kubectl create -f ../manifests/service-1.yaml
 
