@@ -12,9 +12,15 @@ MANIFESTS=./../manifests/
 kubectl config set-context ctx-1 --cluster=minikube --user=minikube --namespace=ns-1
 kubectl config use-context ctx-1 
 
-kubectl create deployment dpl-1 --image=k8s.gcr.io/echoserver:1.4 --namespace=ns-1 --dry-run=client -o yaml > ${MANIFESTS}/deployment-2.yaml
-kubectl apply -f ${MANIFESTS}/deployment-2.yaml
-kubectl expose deployment dpl-1 --type=LoadBalancer --port=8080 --name=service-2   --dry-run=client -o yaml > ${MANIFESTS}/service-2.yaml
-kubectl apply -f ${MANIFESTS}/service-2.yaml
+DEPLOYMENT_1=${MANIFESTS}/deployment-2.yaml
+kubectl create deployment dpl-1 --image=k8s.gcr.io/echoserver:1.4 --namespace=ns-1 --dry-run=client -o yaml > ${DEPLOYMENT_1}
+kubectl create -f ${DEPLOYMENT_1}
+
+SERVICE_1=${MANIFESTS}/service-2.yaml
+kubectl expose deployment dpl-1 --type=LoadBalancer --port=8080 --name=service-2   --dry-run=client -o yaml > ${SERVICE_1}
+kubectl create -f ${SERVICE_1}
+
+kubectl delete -f ${SERVICE_1}
+kubectl delete -f ${DEPLOYMENT_1}
 
 popd
