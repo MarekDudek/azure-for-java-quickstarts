@@ -1,9 +1,8 @@
 #!/bin/bash
-set -euo pipefail
-IFS=$'\n\t'
-
 THIS_FILE=$(readlink -f $0)
 THIS_DIR=`dirname ${THIS_FILE}`
+IFS=$'\n\t'
+set -euox pipefail
 
 
 kubectl config use-context ctx-1
