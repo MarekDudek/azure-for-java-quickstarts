@@ -5,7 +5,7 @@ IFS=$'\n\t'
 set -euox pipefail
 
 
-${THIS_DIR}/tear-down-dpl-1.sh
+${THIS_DIR}/bin/tear-down-dpl-1.sh
 ${THIS_DIR}/tear-down-dpl-2.sh
 
 kubectl config use-context ctx-1

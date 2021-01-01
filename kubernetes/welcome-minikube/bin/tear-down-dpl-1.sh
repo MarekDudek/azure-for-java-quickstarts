@@ -7,7 +7,7 @@ set -euox pipefail
 
 pushd ${THIS_DIR}
 
-MANIFESTS=./manifests/
+MANIFESTS=../manifests/
 
 kubectl config use-context ctx-1
 
