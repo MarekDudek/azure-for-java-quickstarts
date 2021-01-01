@@ -22,4 +22,7 @@ kubectl create -f ../manifests/echoserver-one-service.yaml
 kubectl create -f ../manifests/echoserver-two-deployment.yaml
 kubectl create -f ../manifests/echoserver-two-service.yaml
 
+sleep 30
+kubectl create -f ../manifests/echoserver-three-pod.yaml
+
 popd

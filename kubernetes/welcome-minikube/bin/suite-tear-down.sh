@@ -13,6 +13,8 @@ kubectl delete -f ../manifests/echoserver-two-deployment.yaml
 kubectl delete -f ../manifests/echoserver-one-service.yaml
 kubectl delete -f ../manifests/echoserver-one-deployment.yaml
 
+kubectl delete -f ../manifests/echoserver-three-pod.yaml
+
 kubectl config use-context minikube
 kubectl config delete-context test
 
