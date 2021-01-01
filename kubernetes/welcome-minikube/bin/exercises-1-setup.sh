@@ -26,4 +26,11 @@ DATE_EVERY_SEC=../manifests/date-every-sec-pod.yaml
 kubectl run date-every-sec --image=busybox --port=8080 --dry-run=client -o yaml > ${DATE_EVERY_SEC} -- /bin/sh -c "while true; do date; sleep 1; done" 
 kubectl create --namespace=ckad -f ${DATE_EVERY_SEC}
 
+sleep 5
+NGINX_IP=`kubectl get pod nginx --namespace=ckad --output=jsonpath='{.status.podIP}'`
+
+WGET_FROM_NGINX=../manifests/wget-from-nginx-pod.yaml
+kubectl run wget-from-nginx --image=busybox --port=8080 --dry-run=client -o yaml > ${WGET_FROM_NGINX} -- /bin/sh -c "while true; do wget ${NGINX_IP}:80; sleep 1; done"
+kubectl create --namespace=ckad -f ${WGET_FROM_NGINX}
+
 popd

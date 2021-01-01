@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: wget-from-nginx
+  name: wget-from-nginx
+spec:
+  containers:
+  - args:
+    - /bin/sh
+    - -c
+    - while true; do wget 172.17.0.6:80; sleep 1; done
+    image: busybox
+    name: wget-from-nginx
+    ports:
+    - containerPort: 8080
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

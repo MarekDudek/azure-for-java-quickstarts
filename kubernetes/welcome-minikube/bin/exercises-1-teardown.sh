@@ -9,6 +9,9 @@ pushd ${THIS_DIR}
 
 # 3
 
+kubectl logs nginx --namespace=ckad
+kubectl delete --namespace=ckad -f ../manifests/wget-from-nginx-pod.yaml
+
 kubectl logs date-every-sec --namespace=ckad
 kubectl delete --namespace=ckad -f ../manifests/date-every-sec-pod.yaml
 
