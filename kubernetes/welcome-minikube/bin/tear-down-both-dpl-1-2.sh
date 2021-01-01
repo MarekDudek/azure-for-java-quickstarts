@@ -5,8 +5,12 @@ IFS=$'\n\t'
 set -euox pipefail
 
 
-${THIS_DIR}/bin/tear-down-dpl-1.sh
-${THIS_DIR}/tear-down-dpl-2.sh
+pushd ${THIS_DIR}
+
+./tear-down-dpl-1.sh
+./tear-down-dpl-2.sh
 
 kubectl config use-context ctx-1
-kubectl delete -f ${THIS_DIR}/ns-1.yaml
+kubectl delete -f ../manifests/ns-1.yaml
+
+popd

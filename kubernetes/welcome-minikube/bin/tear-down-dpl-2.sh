@@ -5,8 +5,12 @@ IFS=$'\n\t'
 set -euox pipefail
 
 
-kubectl config use-context ctx-1
-kubectl apply  -f ${THIS_DIR}/ns-1.yaml
+pushd ${THIS_DIR}
 
-${THIS_DIR}/bin/set-up-dpl-1.sh
-${THIS_DIR}/set-up-dpl-2.sh
+kubectl config use-context ctx-1
+
+MANIFESTS=../manifests
+kubectl delete -f ${MANIFESTS}/svc-2.yaml
+kubectl delete -f ${MANIFESTS}/dpl-2.yaml
+
+popd

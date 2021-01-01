@@ -7,11 +7,10 @@ set -euox pipefail
 
 pushd ${THIS_DIR}
 
-MANIFESTS=./manifests/
-
 kubectl config use-context ctx-1
+kubectl apply  -f ../manifests/ns-1.yaml
 
-kubectl delete -f ${MANIFESTS}/svc-2.yaml
-kubectl delete -f ${MANIFESTS}/dpl-2.yaml
+./set-up-dpl-1.sh
+./set-up-dpl-2.sh
 
 popd

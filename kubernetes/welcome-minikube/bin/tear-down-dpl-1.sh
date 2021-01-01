@@ -7,10 +7,9 @@ set -euox pipefail
 
 pushd ${THIS_DIR}
 
-MANIFESTS=../manifests/
-
 kubectl config use-context ctx-1
 
+MANIFESTS=../manifests
 kubectl delete -f ${MANIFESTS}/service-1.yaml
 kubectl delete -f ${MANIFESTS}/deployment-1.yaml
 

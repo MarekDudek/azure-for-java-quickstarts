@@ -4,9 +4,10 @@ THIS_DIR=`dirname ${THIS_FILE}`
 IFS=$'\n\t'
 set -euox pipefail
 
+
 pushd ${THIS_DIR}
 
-MANIFESTS=./../manifests/
+MANIFESTS=./../manifests
 
 kubectl config set-context ctx-1 --cluster=minikube --user=minikube --namespace=ns-1
 kubectl config use-context ctx-1 
