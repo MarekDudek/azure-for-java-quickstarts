@@ -15,8 +15,11 @@ kubectl config use-context test
 
 kubectl create -f ../manifests/test-namespace.yaml
 
-./set-up-both-dpl-1-2.sh
-./tear-down-both-dpl-1-2.sh
+./set-up-dpl-1.sh
+./set-up-dpl-2.sh
+
+./tear-down-dpl-1.sh
+./tear-down-dpl-2.sh
 
 kubectl config use-context minikube
 kubectl config delete-context test
