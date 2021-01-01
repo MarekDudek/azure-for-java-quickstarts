@@ -5,7 +5,13 @@ IFS=$'\n\t'
 set -euox pipefail
 
 
+pushd ${THIS_DIR}
+
+MANIFESTS=./manifests/
+
 kubectl config use-context ctx-1
 
-kubectl delete -f ${THIS_DIR}/svc-1.yaml
-kubectl delete -f ${THIS_DIR}/dpl-1.yaml
+kubectl delete -f ${MANIFESTS}/service-1.yaml
+kubectl delete -f ${MANIFESTS}/deployment-1.yaml
+
+popd
