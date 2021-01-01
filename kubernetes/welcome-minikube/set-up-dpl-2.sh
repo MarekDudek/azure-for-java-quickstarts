@@ -5,7 +5,13 @@ IFS=$'\n\t'
 set -euox pipefail
 
 
+pushd ${THIS_DIR}
+
+MANIFESTS=./manifests/
+
 kubectl config use-context ctx-1
 
-kubectl create -f ${THIS_DIR}/dpl-2.yaml
-kubectl create -f ${THIS_DIR}/svc-2.yaml
+kubectl create -f ${MANIFESTS}/dpl-2.yaml
+kubectl create -f ${MANIFESTS}/svc-2.yaml
+
+popd
