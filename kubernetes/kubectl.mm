@@ -27,7 +27,7 @@
 <node CREATED="1609446397923" ID="ID_1743909941" MODIFIED="1609446399758" TEXT="commands">
 <node CREATED="1609446404123" ID="ID_1495708196" MODIFIED="1609446416911" TEXT="kubectl config view"/>
 <node CREATED="1609446769291" ID="ID_1298084396" MODIFIED="1609446770343" TEXT="kubectl config get-contexts"/>
-<node CREATED="1609447951806" ID="ID_1684158356" MODIFIED="1609448768260" TEXT="kubectl config set-context ctx-1 --cluster=minikube --user=minikube --namespace=ns--1"/>
+<node CREATED="1609447951806" ID="ID_1684158356" MODIFIED="1609468253802" TEXT="kubectl config set-context ctx-1 --cluster=minikube --user=minikube --namespace=ns-1"/>
 <node CREATED="1609447680598" ID="ID_174526831" MODIFIED="1609447681929" TEXT="kubectl config use-context ctx-1"/>
 </node>
 <node CREATED="1609446460011" ID="ID_1337714378" MODIFIED="1609446465991" TEXT="storage">
