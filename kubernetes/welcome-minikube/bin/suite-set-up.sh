@@ -22,7 +22,14 @@ kubectl create -f ../manifests/echoserver-one-service.yaml
 kubectl create -f ../manifests/echoserver-two-deployment.yaml
 kubectl create -f ../manifests/echoserver-two-service.yaml
 
-sleep 30
+n=0; 
+until ((n >= 60)); 
+do 
+  kubectl -n default get serviceaccount default -o name && break; 
+  n=$((n + 1)); 
+  sleep 1; 
+done; 
+
 kubectl create -f ../manifests/echoserver-three-pod.yaml
 
 popd
