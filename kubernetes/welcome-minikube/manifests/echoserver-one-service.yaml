@@ -3,15 +3,15 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: echoserver-nodeport
-  name: service-1
+    app: echoserver-one
+  name: echoserver-nodeport-service
 spec:
   ports:
   - port: 8080
     protocol: TCP
     targetPort: 8080
   selector:
-    app: echoserver-nodeport
+    app: echoserver-one
   type: NodePort
 status:
   loadBalancer: {}

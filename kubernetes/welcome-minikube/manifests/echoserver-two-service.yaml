@@ -3,15 +3,15 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: echoserver-loadbalancer
-  name: service-2
+    app: echoserver-two
+  name: echoserver-loadbalancer-service
 spec:
   ports:
   - port: 8080
     protocol: TCP
     targetPort: 8080
   selector:
-    app: echoserver-loadbalancer
+    app: echoserver-two
   type: LoadBalancer
 status:
   loadBalancer: {}

@@ -13,11 +13,11 @@ kubectl config use-context pre-test
 kubectl apply  -f ../manifests/pre-test-namespace.yaml
 
 DEPLOYMENT=../manifests/echoserver-two-deployment.yaml
-kubectl create deployment echoserver-loadbalancer --image=k8s.gcr.io/echoserver:1.4 --dry-run=client -o yaml > ${DEPLOYMENT}
+kubectl create deployment echoserver-two --image=k8s.gcr.io/echoserver:1.4 --dry-run=client -o yaml > ${DEPLOYMENT}
 kubectl create -f ${DEPLOYMENT}
 
 SERVICE=../manifests/echoserver-two-service.yaml
-kubectl expose deployment echoserver-loadbalancer --type=LoadBalancer --port=8080 --name=service-2   --dry-run=client -o yaml > ${SERVICE}
+kubectl expose deployment echoserver-two --type=LoadBalancer --port=8080 --name=echoserver-loadbalancer-service --dry-run=client -o yaml > ${SERVICE}
 kubectl create -f ${SERVICE}
 
 kubectl delete -f ${SERVICE}

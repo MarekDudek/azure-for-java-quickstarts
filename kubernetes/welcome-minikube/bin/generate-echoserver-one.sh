@@ -13,11 +13,11 @@ kubectl config use-context pre-test
 kubectl apply  -f ../manifests/pre-test-namespace.yaml
 
 DEPLOYMENT=../manifests/echoserver-one-deployment.yaml
-kubectl create deployment echoserver-nodeport --image=k8s.gcr.io/echoserver:1.4 --dry-run=client -o yaml > ${DEPLOYMENT}
+kubectl create deployment echoserver-one --image=k8s.gcr.io/echoserver:1.4 --dry-run=client -o yaml > ${DEPLOYMENT}
 kubectl create -f ${DEPLOYMENT}
 
 SERVICE=../manifests/echoserver-one-service.yaml
-kubectl expose deployment echoserver-nodeport --type=NodePort --port=8080 --name=service-1 --dry-run=client -o yaml > ${SERVICE}
+kubectl expose deployment echoserver-one --type=NodePort --port=8080 --name=echoserver-nodeport-service --dry-run=client -o yaml > ${SERVICE}
 kubectl create -f ${SERVICE}
 
 kubectl delete -f ${SERVICE}

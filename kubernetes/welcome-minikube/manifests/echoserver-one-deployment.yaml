@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: echoserver-nodeport
-  name: echoserver-nodeport
+    app: echoserver-one
+  name: echoserver-one
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: echoserver-nodeport
+      app: echoserver-one
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: echoserver-nodeport
+        app: echoserver-one
     spec:
       containers:
       - image: k8s.gcr.io/echoserver:1.4
