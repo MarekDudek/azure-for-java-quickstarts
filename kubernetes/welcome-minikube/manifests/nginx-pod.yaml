@@ -5,7 +5,6 @@ metadata:
   labels:
     run: nginx
   name: nginx
-  namespace: ckad
 spec:
   containers:
   - image: nginx:1.17.10
