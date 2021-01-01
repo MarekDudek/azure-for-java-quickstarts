@@ -9,8 +9,7 @@ pushd ${THIS_DIR}
 
 kubectl config use-context ctx-1
 
-MANIFESTS=../manifests
-kubectl create -f ${MANIFESTS}/dpl-2.yaml
-kubectl create -f ${MANIFESTS}/svc-2.yaml
+kubectl create -f ../manifests/deployment-2.yaml
+kubectl create -f ../manifests/service-2.yaml
 
 popd

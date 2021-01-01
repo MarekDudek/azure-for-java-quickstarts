@@ -12,12 +12,12 @@ kubectl config use-context ctx-1
 
 kubectl apply  -f ../manifests/ns-1.yaml
 
-DEPLOYMENT=../manifests/dpl-2.yaml
-kubectl create deployment dpl-2 --image=k8s.gcr.io/echoserver:1.4 --namespace=ns-1 --dry-run=client -o yaml > ${DEPLOYMENT}
+DEPLOYMENT=../manifests/deployment-1.yaml
+kubectl create deployment dpl-1 --image=k8s.gcr.io/echoserver:1.4 --namespace=ns-1 --dry-run=client -o yaml > ${DEPLOYMENT}
 kubectl create -f ${DEPLOYMENT}
 
-SERVICE=../manifests/svc-2.yaml
-kubectl expose deployment dpl-2 --type=LoadBalancer --port=8080 --name=service-2   --dry-run=client -o yaml > ${SERVICE}
+SERVICE=../manifests/service-1.yaml
+kubectl expose deployment dpl-1 --type=NodePort --port=8080 --name=service-1 --dry-run=client -o yaml > ${SERVICE}
 kubectl create -f ${SERVICE}
 
 kubectl delete -f ${SERVICE}

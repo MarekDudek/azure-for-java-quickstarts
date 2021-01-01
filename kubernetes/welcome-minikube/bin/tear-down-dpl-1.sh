@@ -9,8 +9,7 @@ pushd ${THIS_DIR}
 
 kubectl config use-context ctx-1
 
-MANIFESTS=../manifests
-kubectl delete -f ${MANIFESTS}/service-1.yaml
-kubectl delete -f ${MANIFESTS}/deployment-1.yaml
+kubectl delete -f ../manifests/service-1.yaml
+kubectl delete -f ../manifests/deployment-1.yaml
 
 popd
