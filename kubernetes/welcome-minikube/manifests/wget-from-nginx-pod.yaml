@@ -10,7 +10,7 @@ spec:
   - args:
     - /bin/sh
     - -c
-    - while true; do wget 172.17.0.6:80 -O /dev/null; sleep 1; done
+    - while true; do wget 172.17.0.6:80 -O-; sleep 1; done
     image: busybox
     name: wget-from-nginx
     ports:

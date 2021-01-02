@@ -42,7 +42,7 @@ done;
 
 
 WGET_FROM_NGINX=../manifests/wget-from-nginx-pod.yaml
-kubectl run wget-from-nginx --image=busybox --port=8080 --dry-run=client -o yaml > ${WGET_FROM_NGINX} -- /bin/sh -c "while true; do wget ${NGINX_IP}:80 -O /dev/null; sleep 1; done"
+kubectl run wget-from-nginx --image=busybox --port=8080 --dry-run=client -o yaml > ${WGET_FROM_NGINX} -- /bin/sh -c "while true; do wget ${NGINX_IP}:80 -O-; sleep 1; done"
 kubectl create --namespace=ckad -f ${WGET_FROM_NGINX}
 
 popd
