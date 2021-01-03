@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: wget-from-nginx-configurable
+  name: wget-from-nginx-configurable
+spec:
+  containers:
+  - args:
+    - /bin/sh
+    - -c
+    - while true; do wget ${URL}:80 -O-; sleep 1; done
+    image: busybox
+    name: wget-from-nginx-configurable
+    ports:
+    - containerPort: 8080
+    env:
+    - name: URL
+      value: 172.17.0.6
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
