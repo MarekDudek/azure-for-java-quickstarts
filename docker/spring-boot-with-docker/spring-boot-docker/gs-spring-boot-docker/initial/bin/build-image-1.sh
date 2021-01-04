@@ -10,7 +10,7 @@ mvn clean install
 
 docker build -t md/spring-boot-docker-1 -f ./docker/Dockerfile1 .
 
-docker image prune --force
+#docker image prune --force
 docker images
 
 popd

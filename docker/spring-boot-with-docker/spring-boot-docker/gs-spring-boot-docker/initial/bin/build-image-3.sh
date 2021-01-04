@@ -11,7 +11,7 @@ mvn clean install
 mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 TAG=md/spring-boot-docker-3:latest
-docker image rm ${TAG} --force
+#docker image rm ${TAG} --force
 docker build -t ${TAG} -f ./docker/Dockerfile3 .
 
 docker images
