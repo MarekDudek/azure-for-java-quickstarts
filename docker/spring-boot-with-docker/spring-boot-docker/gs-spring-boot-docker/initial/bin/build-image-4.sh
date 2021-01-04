@@ -6,11 +6,9 @@ set -euox pipefail
 
 pushd "${THIS_DIR}"/..
 
-mvn clean install
-
-docker build -t md/spring-boot-docker-1 -f ./docker/Dockerfile1 .
-
-docker image prune --force
+./mvnw clean install
+TAG=md/spring-boot-docker-4:latest
+./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=${TAG}
 docker images
 
 popd

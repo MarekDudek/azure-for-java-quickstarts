@@ -8,7 +8,7 @@ pushd "${THIS_DIR}"/..
 
 mvn clean install
 
-docker build -t md/spring-boot-docker -f ./docker/Dockerfile2 .
+docker build -t md/spring-boot-docker-2 -f ./docker/Dockerfile2 .
 
 docker image prune --force
 docker images
