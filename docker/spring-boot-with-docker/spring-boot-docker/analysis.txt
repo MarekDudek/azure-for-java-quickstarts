@@ -1,0 +1,5 @@
+
+check image sizes after optimizing
+check build context sizes after optimizing
+
+arg is Maven-specific
