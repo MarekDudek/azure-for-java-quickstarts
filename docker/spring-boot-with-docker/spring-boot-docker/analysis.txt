@@ -1,5 +1,28 @@
 
-check image sizes after optimizing
-check build context sizes after optimizing
+* check image sizes after optimizing
+* check build context sizes after optimizing
 
 arg is Maven-specific
+
+Running image build with non-default Dockerfile
+===============================================
+docker build -t md/spring-boot-docker -f Dockerfile2 .
+
+Running image
+=============
+docker run -p 8080:8080 md/spring-boot-docker
+
+
+image is JDK, check with JRE
+	JRE is 20 MB smaller
+what is smallest base image with Java?
+
+* check build times
+* check startup times
+
+
+Spring Boot-specific layers
+===========================
+
+* requires manual unpacking
+mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
