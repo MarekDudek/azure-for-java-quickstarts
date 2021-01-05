@@ -28,3 +28,17 @@ Spring Boot-specific layers
 mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 Exploding JAR may result in different classpath order
+
+
+Spring Boot profile
+===================
+
+docker run -e "SPRING_PROFILES_ACTIVE=prod" -p 8080:8080 -t springio/gs-spring-boot-docker
+
+Debugging
+=========
+
+docker run -e "JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,address=5005,server=y,suspend=n" -p 8080:8080 -p 5005:5005 -t springio/gs-spring-boot-docker
+
+IntelliJ -> Run -> Edit Configurations -> Template -> Remote JVM Debug -> Create Configuration
+
