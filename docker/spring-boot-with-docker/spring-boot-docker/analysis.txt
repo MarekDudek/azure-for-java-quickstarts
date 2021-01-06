@@ -61,4 +61,8 @@ Possibility to pass arguments:
 Possibility to debug remotely
 Secure
 	group and user
-Entry point script?
+Entry point script
+Possibility to attach to container
+
+docker run --name spa --rm -e "JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,address=5005,server=y,suspend=n" -e "JAVA_OPTS=-Ddebug" -p 8080:9000 -p 5005:5005 -t marekdudek/spring-boot-docker-5 --server.port=9000
+docker exec -it spa /bin/sh
