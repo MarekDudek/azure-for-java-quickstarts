@@ -4,13 +4,21 @@ THIS_DIR=`dirname ${THIS_FILE}`
 IFS=$'\n\t'
 set -euox pipefail
 
-pushd "${THIS_DIR}"/..
+
+pushd "${THIS_DIR}"
+pushd ..
 
 mvn clean install
 
-docker build -t marekdudek/spring-boot-docker -f ./docker/Dockerfile1 .
+TAG=marekdudek/spring-boot-docker-1
 
-#docker image prune --force
-docker images
+docker build \
+	--build-arg JAR_FILE=target/*.jar \
+	-t ${TAG} \
+	-f ./docker/Dockerfile1 .
 
+docker images ${TAG}
+docker push ${TAG}
+
+popd
 popd
