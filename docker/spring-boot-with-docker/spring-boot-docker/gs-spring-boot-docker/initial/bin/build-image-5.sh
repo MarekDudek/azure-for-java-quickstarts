@@ -10,8 +10,8 @@ mvn clean install
 
 mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
-TAG=marekdudek/spring-boot-docker-3
-docker build -t ${TAG} -f ./docker/Dockerfile3 .
+TAG=marekdudek/spring-boot-docker-5
+docker build -t ${TAG} -f ./docker/Dockerfile5 .
 
 docker images ${TAG}
 

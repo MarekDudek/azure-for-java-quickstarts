@@ -10,8 +10,9 @@ docker build -t md/spring-boot-docker -f Dockerfile2 .
 
 Running image
 =============
-docker run -p 8080:8080 md/spring-boot-docker
+docker run --name spa --rm -t marekdudek/spring-boot-docker-1 -p 8080:8080
 
+name param has to be first?
 
 image is JDK, check with JRE
 	JRE is 20 MB smaller
@@ -19,6 +20,11 @@ what is smallest base image with Java?
 
 * check build times
 * check startup times
+
+Running interactive
+===================
+docker run -it --entrypoint /bin/sh spa
+docker exec -it spa /bin/sh
 
 
 Spring Boot-specific layers
@@ -42,3 +48,17 @@ docker run -e "JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,address=5005
 
 IntelliJ -> Run -> Edit Configurations -> Template -> Remote JVM Debug -> Create Configuration
 
+
+End goal
+========
+
+Build with Docker file, optimized for building convenience.
+Small size, fast build - good trade-off
+Unpacked Spring Boot app with layers
+Possibility to pass arguments:
+	JAVA_OPTS
+	Spring profiles
+Possibility to debug remotely
+Secure
+	group and user
+Entry point script?
