@@ -7,7 +7,8 @@ curl https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar 
 Contenerizing with Spring Boot plugin
 =====================================
 
-./mvnw spring-boot:build-image
+
+./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=marekdudek/sb-on-k8s
 
 
 Multiple Kubernetes objects in single file
@@ -37,3 +38,43 @@ Actuator
 ========
 
 curl localhost:8080/actuator | jq .
+
+Probes and lifecycle
+====================
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gs-spring-boot-k8s
+  name: gs-spring-boot-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gs-spring-boot-k8s
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gs-spring-boot-k8s
+    spec:
+      containers:
+      - image: spring-k8s/gs-spring-boot-k8s:snapshot
+        name: gs-spring-boot-k8s
+        resources: {}
+        livenessProbe:					<----
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+        readinessProbe:					<----
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+        lifecycle:					<----
+          preStop:
+            exec:
+              command: ["sh", "-c", "sleep 10"]		<----
+status: {}

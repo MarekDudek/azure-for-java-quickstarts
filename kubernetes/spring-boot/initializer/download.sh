@@ -14,12 +14,12 @@ rm -rf ${DOWNLOAD} && mkdir ${DOWNLOAD} && pushd ${DOWNLOAD}
 PROJECT=project.zip
 
 curl https://start.spring.io/starter.zip \
-         -d name=Demo -d description="Spring Boot Demo" \
+         -d name="Spring Boot Kubernetes Demo" -d description="Spring Boot application running on Kubernetes" \
 	 -d language=java -d javaVersion=11 \
 	 -d type=maven-project \
 	 -d bootVersion=2.4.1 \
-	 -d groupId=md -d artifact=demo \
-         -d packageName=md.demo \
+	 -d groupId=md -d artifact=k8s-demo \
+         -d packageName=md.k8s.demo \
          -d packaging=jar \
 	 -d dependencies=webflux,actuator \
 	 --output ${PROJECT}
