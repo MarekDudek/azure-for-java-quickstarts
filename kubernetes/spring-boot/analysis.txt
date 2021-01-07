@@ -14,6 +14,8 @@ Multiple Kubernetes objects in single file
 ==========================================
 
 kubectl create deployment demo --image=springguides/demo --dry-run=client -o=yaml > deployment.yaml
+echo --- >> deployment.yaml
+kubectl create service clusterip demo --tcp=8080:8080 --dry-run=client -o=yaml >> deployment.yaml
 
 View all objects in cluster
 ===========================
@@ -30,3 +32,8 @@ Health check
 ============
 
 curl localhost:8080/actuator/health
+
+Actuator
+========
+
+curl localhost:8080/actuator | jq .
