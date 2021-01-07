@@ -8,7 +8,7 @@ Contenerizing with Spring Boot plugin
 =====================================
 
 
-./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=marekdudek/sb-on-k8s
+./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=marekdudek/k8s-demo
 
 
 Multiple Kubernetes objects in single file
