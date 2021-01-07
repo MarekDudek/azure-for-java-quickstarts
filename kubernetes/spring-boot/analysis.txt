@@ -2,3 +2,31 @@ Spring Boot app generation
 ==========================
 
 curl https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -
+
+
+Contenerizing with Spring Boot plugin
+=====================================
+
+./mvnw spring-boot:build-image
+
+
+Multiple Kubernetes objects in single file
+==========================================
+
+kubectl create deployment demo --image=springguides/demo --dry-run=client -o=yaml > deployment.yaml
+
+View all objects in cluster
+===========================
+
+kubectl get all
+
+
+Port forwarding with kubectl
+============================
+
+kubectl port-forward svc/demo 8080:8080
+
+Health check
+============
+
+curl localhost:8080/actuator/health
