@@ -9,5 +9,4 @@ class SpringBootKubernetesDemoApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
