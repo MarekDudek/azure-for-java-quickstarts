@@ -1,4 +1,4 @@
-package md.rest_client.consumer;
+package md.rest_client.client;
 
 import md.rest_client.domain.Greeting;
 import org.springframework.beans.factory.annotation.Autowired;

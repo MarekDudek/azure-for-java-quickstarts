@@ -1,6 +1,6 @@
 package md.rest_client;
 
-import md.rest_client.consumer.GreetingClient;
+import md.rest_client.client.GreetingClient;
 import md.rest_client.domain.Greeting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
