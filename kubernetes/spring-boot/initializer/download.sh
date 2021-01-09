@@ -18,8 +18,8 @@ curl https://start.spring.io/starter.zip \
 	 -d language=java -d javaVersion=11 \
 	 -d type=maven-project \
 	 -d bootVersion=2.4.1 \
-	 -d groupId=md -d artifact=k8s-demo \
-         -d packageName=md.k8s.demo \
+	 -d groupId=md -d artifact=rest-client \
+         -d packageName=md.rest_client\
          -d packaging=jar \
 	 -d dependencies=webflux,actuator \
 	 --output ${ARCHIVE}
