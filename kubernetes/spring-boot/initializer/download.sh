@@ -7,11 +7,11 @@ set -euox pipefail
 
 pushd ${THIS_DIR} 
 
-DOWNLOAD=./download
+PROJECT=./project
 
-rm -rf ${DOWNLOAD} && mkdir ${DOWNLOAD} && pushd ${DOWNLOAD}
+rm -rf ${PROJECT} && mkdir ${PROJECT} && pushd ${PROJECT}
 
-PROJECT=project.zip
+ARCHIVE=archive.zip
 
 curl https://start.spring.io/starter.zip \
          -d name="Spring Boot Kubernetes Demo" -d description="Spring Boot application running on Kubernetes" \
@@ -22,8 +22,8 @@ curl https://start.spring.io/starter.zip \
          -d packageName=md.k8s.demo \
          -d packaging=jar \
 	 -d dependencies=webflux,actuator \
-	 --output ${PROJECT}
+	 --output ${ARCHIVE}
 
-unzip ${PROJECT} && rm -f ${PROJECT}
+unzip ${ARCHIVE} && rm -f ${ARCHIVE}
 
 popd && popd
