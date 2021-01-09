@@ -18,10 +18,10 @@ curl https://start.spring.io/starter.zip \
 	 -d language=java -d javaVersion=11 \
 	 -d type=maven-project \
 	 -d bootVersion=2.4.1 \
-	 -d groupId=md -d artifact=rest-server \
-         -d packageName=md.rest_server\
+	 -d groupId=md -d artifact=rest-client \
+         -d packageName=md.rest_client\
          -d packaging=jar \
-	 -d dependencies=webflux,actuator,lombok \
+	 -d dependencies=web,actuator,lombok \
 	 --output ${ARCHIVE}
 
 unzip ${ARCHIVE} && rm -f ${ARCHIVE}

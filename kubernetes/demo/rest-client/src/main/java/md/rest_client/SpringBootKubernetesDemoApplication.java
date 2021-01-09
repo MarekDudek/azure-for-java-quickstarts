@@ -1,7 +1,14 @@
 package md.rest_client;
 
+import md.rest_client.domain.Greeting;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+import static java.lang.System.out;
 
 @SpringBootApplication
 public class SpringBootKubernetesDemoApplication {
@@ -10,4 +17,16 @@ public class SpringBootKubernetesDemoApplication {
 		SpringApplication.run(SpringBootKubernetesDemoApplication.class, args);
 	}
 
+	@Bean
+	public RestTemplate template(final RestTemplateBuilder builder) {
+		return builder.build();
+	}
+
+	@Bean
+	public CommandLineRunner run(final RestTemplate template) {
+		return args -> {
+			final Greeting greeting = template.getForObject("http://localhost:8080/greeting", Greeting.class);
+			out.println(greeting);
+		};
+	}
 }
