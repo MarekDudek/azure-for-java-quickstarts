@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: rest-server
+  name: rest-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rest-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: rest-server
+    spec:
+      containers:
+      - image: marekdudek/rest-server
+        name: rest-server
+        ports:
+        - containerPort: 8082
+        resources: {}
+status: {}

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: rest-client
+  name: rest-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rest-client
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: rest-client
+    spec:
+      containers:
+      - image: marekdudek/rest-client
+        name: rest-client
+        resources: {}
+status: {}
