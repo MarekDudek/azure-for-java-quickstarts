@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import static java.lang.System.out;
 
@@ -17,8 +19,10 @@ public class SpringBootKubernetesDemoApplication {
 		SpringApplication.run(SpringBootKubernetesDemoApplication.class, args);
 	}
 
-	@Autowired
-	private GreetingClient client;
+	@Bean
+	public RestTemplate template(final RestTemplateBuilder builder) {
+		return builder.build();
+	}
 
 	@Bean
 	public CommandLineRunner run() {
@@ -27,4 +31,7 @@ public class SpringBootKubernetesDemoApplication {
 			out.println(greeting);
 		};
 	}
+
+	@Autowired
+	private GreetingClient client;
 }
