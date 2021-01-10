@@ -1,4 +1,4 @@
-package md.rest_client.client;
+package md.rest_client.scheduler;
 
 import md.rest_client.domain.Greeting;
 import org.springframework.beans.factory.annotation.Autowired;
