@@ -1,12 +1,12 @@
-package md.rest_server;
+package md.rest_client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootKubernetesDemoApplication {
+public class RestClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootKubernetesDemoApplication.class, args);
+        SpringApplication.run(RestClientApplication.class, args);
     }
 }

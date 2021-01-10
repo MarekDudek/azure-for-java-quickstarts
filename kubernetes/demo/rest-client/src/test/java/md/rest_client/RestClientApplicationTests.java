@@ -1,12 +1,13 @@
-package md.rest_server;
+package md.rest_client;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootKubernetesDemoApplicationTests {
+class RestClientApplicationTests {
 
     @Test
     void contextLoads() {
     }
+
 }
