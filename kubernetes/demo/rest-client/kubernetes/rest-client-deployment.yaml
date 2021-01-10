@@ -20,5 +20,7 @@ spec:
       containers:
       - image: marekdudek/rest-client
         name: rest-client
+        ports:
+        - containerPort: 8081
         resources: {}
 status: {}
