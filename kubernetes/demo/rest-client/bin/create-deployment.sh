@@ -5,11 +5,16 @@ IFS=$'\n\t'
 set -euox pipefail
 
 pushd "${THIS_DIR}"
+pushd ../kubernetes
 
-kubectl create deployment rest-client --image marekdudek/rest-client --port 8081 -o yaml --dry-run=client > ../kubernetes/rest-client-deployment.yaml
-kubectl create -f ../kubernetes/rest-client-deployment.yaml
+DEPLOYMENT=rest-client-deployment.yaml
+kubectl create deployment rest-client --image marekdudek/rest-client --port 8081 -o yaml --dry-run=client > ${DEPLOYMENT}
+patch ${DEPLOYMENT} best-practices.patch
+#kubectl create -f ${DEPLOYMENT}
 
-kubectl expose deployment rest-client --port 7071 --target-port=8081 --type=NodePort -o yaml --dry-run=client > ../kubernetes/rest-client-service.yaml
-kubectl create -f ../kubernetes/rest-client-service.yaml
+SERVICE=rest-client-service.yaml
+kubectl expose deployment rest-client --port 7071 --target-port=8081 --type=NodePort -o yaml --dry-run=client > ${SERVICE}
+#kubectl create -f .${SERVICE}
 
+popd
 popd
