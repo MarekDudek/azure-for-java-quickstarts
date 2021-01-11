@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  application.properties: greeting.url=http://rest-server:7072/greeting
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: rest-client-config
