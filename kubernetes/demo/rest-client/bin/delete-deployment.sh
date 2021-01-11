@@ -8,8 +8,8 @@ pushd "${THIS_DIR}"
 source common.sh
 pushd ../kubernetes
 
-kubectl delete -f "${CONFIG}"
 kubectl delete -f "${SERVICE}"
 kubectl delete -f "${DEPLOYMENT}"
+kubectl delete -f "${CONFIG}"
 
 popd ; popd

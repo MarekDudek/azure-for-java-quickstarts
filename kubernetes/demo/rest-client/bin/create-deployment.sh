@@ -8,8 +8,8 @@ pushd "${THIS_DIR}"
 source common.sh
 pushd ../kubernetes
 
+kubectl create -f "${CONFIG}"
 kubectl create -f "${DEPLOYMENT}"
 kubectl create -f "${SERVICE}"
-kubectl create -f "${CONFIG}"
 
 popd ; popd

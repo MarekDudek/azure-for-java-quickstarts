@@ -16,5 +16,4 @@ SERVICE=rest-server-service.yaml
 kubectl expose deployment rest-server --port 7072 --target-port=8082 --type=NodePort -o yaml --dry-run=client > ${SERVICE}
 kubectl create -f ${SERVICE}
 
-popd
-popd
+popd ; popd

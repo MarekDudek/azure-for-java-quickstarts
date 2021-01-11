@@ -5,11 +5,8 @@ IFS=$'\n\t'
 set -euox pipefail
 
 pushd "${THIS_DIR}"
-
 pushd ..
 
 ./mvnw spring-boot:build-image
 
-popd
-
-popd
+popd ; popd
