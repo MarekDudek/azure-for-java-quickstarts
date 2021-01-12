@@ -7,7 +7,8 @@ metadata:
   name: rest-client
 spec:
   ports:
-  - port: 7071
+  - name: 7071-8081
+    port: 7071
     protocol: TCP
     targetPort: 8081
   selector:

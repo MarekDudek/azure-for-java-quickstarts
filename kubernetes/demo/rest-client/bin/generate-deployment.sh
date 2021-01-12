@@ -14,6 +14,6 @@ kubectl create deployment rest-client --image marekdudek/rest-client --port 8081
 patch "${DEPLOYMENT}" best-practices.patch
 patch "${DEPLOYMENT}" volume.patch
 
-kubectl expose deployment rest-client --port 7071 --target-port=8081 --type=NodePort -o yaml --dry-run=client > "${SERVICE}"
+kubectl create service nodeport rest-client --tcp=7071:8081 -o yaml --dry-run=client > "${SERVICE}"
 
 popd ; popd
