@@ -17,6 +17,11 @@ Technologies
 
 TODO:
 
-check which config is applied
-clean up server scripts
+* check which config is applied
+* clean up server scripts
 how to pass -Ddebug
+
+Azure
+=====
+
+
