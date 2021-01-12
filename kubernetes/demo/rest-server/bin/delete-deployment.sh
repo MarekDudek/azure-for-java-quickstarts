@@ -5,8 +5,10 @@ IFS=$'\n\t'
 set -euox pipefail
 
 pushd "${THIS_DIR}"
+source common.sh
+pushd ../kubernetes
 
-kubectl delete -f ../kubernetes/rest-server-deployment.yaml
-kubectl delete -f ../kubernetes/rest-server-service.yaml
+kubectl delete -f "${DEPLOYMENT}"
+kubectl delete -f "${SERVICE}"
 
 popd

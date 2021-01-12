@@ -13,3 +13,10 @@ Technologies
 	* Kafka
 * Database
 	* PostgreSQL
+
+
+TODO:
+
+check which config is applied
+clean up server scripts
+how to pass -Ddebug
