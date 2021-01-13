@@ -12,3 +12,13 @@
 |          |test           |minikube       |minikube                                         |test	|
 
 * `kubectl config set-context minikube`
+
+## Logs
+
+* dump logs
+
+`kubectl logs my-pod` 
+
+* stream logs
+
+`kubectl logs -f my-pod`
