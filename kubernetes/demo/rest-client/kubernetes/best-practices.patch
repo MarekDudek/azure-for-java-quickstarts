@@ -1,5 +1,5 @@
 --- ./rest-client-deployment.yaml	2021-01-11 18:23:55.631135516 +0100
-+++ ./rest-client-deployment-after.yaml	2021-01-11 18:24:48.419310317 +0100
++++ ./rest-client-deployment.yaml	2021-01-11 18:24:48.419310317 +0100
 @@ -23,4 +23,16 @@
          ports:
          - containerPort: 8081
