@@ -1,4 +1,3 @@
-
 Log into Azure with bash on local machine
 =========================================
 
@@ -52,3 +51,15 @@ To Do
 * Scale out
 * Scale out manually or automatically
 * Set up CI/CD
+
+
+# [Deploy Java Apps](deploy-java-apps/linux-and-tomcat/DeployJavaApps.md)
+# [Spring Cloud](spring-cloud/SpringCloud.md)
+# [Serverless](serverless-functions/Serverless.md)
+# [Docker commands](docker/how-to-get-started-with-docker/docker-commands/DockerCommands.md)
+# [Java with Docker](docker/how-to-get-started-with-docker/java-with-docker/JavaWithDocker.md)
+# [Dockerfiles](docker/how-to-get-started-with-docker/dockerfiles/DockerFiles.md)
+# [Spring Boot with Docker](docker/spring-boot-with-docker/spring-boot-docker/SpringBootWithDocker.md)
+# [Kubernetes](kubernetes/Kubernetes.md)
+# [Kubernetes Demo](kubernetes/demo/KubernetesDemo.md)
+# [Kubernetes Spring Boot](kubernetes/spring-boot/KubernetesSpringBoot.md)
