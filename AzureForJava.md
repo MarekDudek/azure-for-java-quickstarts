@@ -68,5 +68,9 @@ To Do
 # Kubernetes
 
 * [Minikube](kubernetes/Minikube.md)
-* [Kubernetes Demo](kubernetes/demo/KubernetesDemo.md)
+* [Kubernetes](kubernetes/Kubernetes.md)
 * [Kubernetes Spring Boot](kubernetes/spring-boot/KubernetesSpringBoot.md)
+
+# Demo
+
+* [Kubernetes Demo](kubernetes/demo/KubernetesDemo.md)
