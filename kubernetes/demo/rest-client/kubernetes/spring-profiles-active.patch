@@ -1,0 +1,12 @@
+--- a/kubernetes/demo/rest-client/kubernetes/rest-client-deployment.yaml
++++ b/kubernetes/demo/rest-client/kubernetes/rest-client-deployment.yaml
+@@ -38,6 +38,9 @@ spec:
+         volumeMounts:
+           - name: config-volume
+             mountPath: /workspace/config
++        env:
++          - name: SPRING_PROFILES_ACTIVE
++            value: every-second
+       volumes:
+         - name: config-volume
+           configMap:

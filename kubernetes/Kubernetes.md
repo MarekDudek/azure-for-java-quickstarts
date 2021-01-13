@@ -22,3 +22,17 @@
 * stream logs
 
 `kubectl logs -f my-pod`
+
+## Accessing container
+
+* Run command
+
+`kubectl exec my-pod -- ls /workspace`
+
+* Interactive shell access
+
+`kubectl exec --stdin --tty my-pod -- /bin/bash`
+
+## Passing parameters
+
+`kubectl run my-pod --image=my-image --env SPRING_PROFILES_ACTIVE=profile`

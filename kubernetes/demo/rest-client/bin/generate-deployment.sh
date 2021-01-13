@@ -13,6 +13,7 @@ kubectl create configmap rest-client-config --from-file=application.properties -
 kubectl create deployment rest-client --image marekdudek/rest-client --port 8081 -o yaml --dry-run=client > "${DEPLOYMENT}"
 patch "${DEPLOYMENT}" best-practices.patch
 patch "${DEPLOYMENT}" volume.patch
+patch "${DEPLOYMENT}" spring-profiles-active.patch
 
 kubectl create service nodeport rest-client --tcp=7071:8081 -o yaml --dry-run=client > "${SERVICE}"
 

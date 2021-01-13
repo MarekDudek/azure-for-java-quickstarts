@@ -6,6 +6,7 @@ import org.quartz.Trigger;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.client.RestTemplate;
 
 import static org.quartz.JobBuilder.newJob;
@@ -29,6 +30,7 @@ public class GreetingConfiguration {
     }
 
     @Bean
+    @Profile("every-second")
     public SimpleScheduleBuilder everySecond() {
         return simpleSchedule().
                 repeatForever().
@@ -36,13 +38,21 @@ public class GreetingConfiguration {
     }
 
     @Bean
+    @Profile("!every-second")
+    public SimpleScheduleBuilder everyFiveSeconds() {
+        return simpleSchedule().
+                repeatForever().
+                withIntervalInSeconds(5);
+    }
+
+    @Bean
     public Trigger greetingJobTrigger(
             final JobDetail greetingJobDetail,
-            final SimpleScheduleBuilder everySecond
+            final SimpleScheduleBuilder scheduleBuilder
     ) {
         return newTrigger().
                 forJob(greetingJobDetail).
-                withSchedule(everySecond).
+                withSchedule(scheduleBuilder).
                 build();
     }
 }

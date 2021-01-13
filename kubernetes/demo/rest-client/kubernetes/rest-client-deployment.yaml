@@ -38,6 +38,9 @@ spec:
         volumeMounts:
           - name: config-volume
             mountPath: /workspace/config
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: every-second
       volumes:
         - name: config-volume
           configMap:
