@@ -22,6 +22,7 @@ spec:
         name: rest-client
         ports:
         - containerPort: 8081
+        - containerPort: 5005
         resources: {}
         livenessProbe:
           httpGet:
@@ -41,6 +42,8 @@ spec:
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: every-second
+          - name: JAVA_TOOL_OPTIONS
+            value: -agentlib:jdwp=transport=dt_socket,address=5005,server=y,suspend=n
       volumes:
         - name: config-volume
           configMap:

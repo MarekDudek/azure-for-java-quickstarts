@@ -14,6 +14,7 @@ kubectl create deployment rest-client --image marekdudek/rest-client --port 8081
 patch "${DEPLOYMENT}" best-practices.patch
 patch "${DEPLOYMENT}" volume.patch
 patch "${DEPLOYMENT}" spring-profiles-active.patch
+patch "${DEPLOYMENT}" debugging.patch
 
 kubectl create service nodeport rest-client --tcp=7071:8081 -o yaml --dry-run=client > "${SERVICE}"
 

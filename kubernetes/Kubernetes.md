@@ -35,4 +35,4 @@
 
 ## Passing parameters
 
-`kubectl run my-pod --image=my-image --env SPRING_PROFILES_ACTIVE=profile`
+`kubectl run my-pod --image= --env SPRING_PROFILES_ACTIVE=profile`

@@ -10,6 +10,7 @@ pushd ../kubernetes
 
 kubectl create deployment rest-server --image marekdudek/rest-server --port 8082 -o yaml --dry-run=client > "${DEPLOYMENT}"
 patch "${DEPLOYMENT}" best-practices.patch
+patch "${DEPLOYMENT}" debugging.patch
 
 kubectl create service nodeport rest-server --tcp=7072:8082 -o yaml --dry-run=client > "${SERVICE}"
 
