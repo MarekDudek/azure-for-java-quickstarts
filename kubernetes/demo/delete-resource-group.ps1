@@ -1,0 +1,1 @@
+az group delete --name k8s-rg --yes --no-wait
