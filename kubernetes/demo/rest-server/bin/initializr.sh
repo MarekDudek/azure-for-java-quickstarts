@@ -24,7 +24,7 @@ curl https://start.spring.io/starter.zip \
 	 -d artifactId=rest-server \
    -d packageName=md.rest_server \
    -d packaging=jar \
-	 -d dependencies=webflux,actuator,lombok,devtools \
+	 -d dependencies=webflux,postgresql,h2,jpa,actuator,lombok,devtools \
 	 --output ${ARCHIVE}
 
 unzip ${ARCHIVE} && rm -f ${ARCHIVE}

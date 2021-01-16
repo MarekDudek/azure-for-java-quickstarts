@@ -21,6 +21,8 @@
 
     <properties>
         <java.version>11</java.version>
+        <downloadSources>true</downloadSources>
+        <downloadJavadocs>true</downloadJavadocs>
     </properties>
 
     <dependencies>
