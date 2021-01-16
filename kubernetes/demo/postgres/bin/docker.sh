@@ -11,4 +11,3 @@ sleep 10
 docker exec -it my-postgres psql -U postgres
 docker stop my-postgres
 docker rm my-postgres
-
