@@ -7,8 +7,6 @@ set -euox pipefail
 pushd "${THIS_DIR}"
 source common.sh
 
-docker run -p 8082:8082 --name rest-server -t "${IMAGE}"
-
-curl http://localhost:8082/actuator/health; echo
+docker push "${IMAGE}"
 
 popd

@@ -8,7 +8,7 @@ pushd "${THIS_DIR}"
 source common.sh
 pushd ../kubernetes
 
-kubectl create deployment rest-server --image marekdudek/rest-server --port 8082 -o yaml --dry-run=client > "${DEPLOYMENT}"
+kubectl create deployment rest-server --image "${IMAGE}" --port 8082 -o yaml --dry-run=client > "${DEPLOYMENT}"
 patch "${DEPLOYMENT}" best-practices.patch
 patch "${DEPLOYMENT}" debugging.patch
 

@@ -5,8 +5,9 @@ IFS=$'\n\t'
 set -euox pipefail
 
 pushd "${THIS_DIR}"
+source common.sh
 
-docker run -p 8081:8081 --name rest-client -t marekdudek/rest-client
+docker run -p 8081:8081 --name rest-client -t "${IMAGE}"
 
 curl http://localhost:8081/actuator/health; echo
 

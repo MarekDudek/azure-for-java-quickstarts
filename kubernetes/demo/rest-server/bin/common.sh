@@ -4,3 +4,5 @@ set -euox pipefail
 
 export DEPLOYMENT=rest-server-deployment.yaml
 export SERVICE=rest-server-service.yaml
+
+export IMAGE=marekdudek/rest-server

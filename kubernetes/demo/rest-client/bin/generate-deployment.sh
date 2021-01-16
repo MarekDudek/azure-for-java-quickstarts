@@ -10,7 +10,7 @@ pushd ../kubernetes
 
 kubectl create configmap rest-client-config --from-file=application.properties -o yaml --dry-run=client > "${CONFIG}"
 
-kubectl create deployment rest-client --image marekdudek/rest-client --port 8081 -o yaml --dry-run=client > "${DEPLOYMENT}"
+kubectl create deployment rest-client --image "${IMAGE}" --port 8081 -o yaml --dry-run=client > "${DEPLOYMENT}"
 patch "${DEPLOYMENT}" best-practices.patch
 patch "${DEPLOYMENT}" volume.patch
 patch "${DEPLOYMENT}" spring-profiles-active.patch
