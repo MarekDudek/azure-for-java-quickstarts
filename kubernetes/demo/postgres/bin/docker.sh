@@ -11,3 +11,14 @@ sleep 10
 docker exec -it my-postgres psql -U postgres
 docker stop my-postgres
 docker rm my-postgres
+
+
+docker run --name postgresql -p 5431:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+docker exec -it postgresql /bin/bash
+psql -h localhost -p 5432 -U postgres -W
+exit
+
+psql -h localhost -U postgres -d postgres -p 5431
+
+docker stop postgresql
+docker rm postgresql
