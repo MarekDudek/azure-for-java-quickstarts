@@ -3,3 +3,5 @@
 **/.idea/
 **/target/
 **/.gradle/
+
+kubernetes/demo/rest-server/data/
