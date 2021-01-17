@@ -1,1 +1,0 @@
-az group create --name k8s-rg --location westeurope
