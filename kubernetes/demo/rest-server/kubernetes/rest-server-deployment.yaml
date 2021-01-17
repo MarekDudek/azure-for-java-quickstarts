@@ -40,5 +40,5 @@ spec:
           - name: JAVA_TOOL_OPTIONS
             value: -agentlib:jdwp=transport=dt_socket,address=5005,server=y,suspend=n
           - name: SPRING_PROFILES_ACTIVE
-            value: postgres-kubernetes-inside
+            value: postgres-kubernetes
 status: {}
