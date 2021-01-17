@@ -11,5 +11,6 @@ pushd ../kubernetes
 kubectl create -f "${CONFIG}"
 kubectl create -f "${VOLUME}"
 kubectl create -f "${CLAIM}"
+kubectl create -f "${DEPLOYMENT}"
 
 popd ; popd
