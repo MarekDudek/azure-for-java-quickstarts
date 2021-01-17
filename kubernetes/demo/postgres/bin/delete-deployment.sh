@@ -8,8 +8,8 @@ pushd "${THIS_DIR}"
 source common.sh
 pushd ../kubernetes
 
-kubectl create -f "${CONFIG}"
-kubectl create -f "${VOLUME}"
-kubectl create -f "${CLAIM}"
+kubectl delete -f "${CLAIM}"
+kubectl delete -f "${VOLUME}"
+kubectl delete -f "${CONFIG}"
 
 popd ; popd
