@@ -94,8 +94,8 @@
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <configuration>
                     <propertyFileWillOverride>true</propertyFileWillOverride>
-                    <outputChangeLogFile>src/main/resources/db/changelog/generated.xml</outputChangeLogFile>
                     <changeLogFile>src/main/resources/db/changelog/master.xml</changeLogFile>
+                    <outputChangeLogFile>src/main/resources/db/changelog/generated.xml</outputChangeLogFile>
                 </configuration>
             </plugin>
         </plugins>
