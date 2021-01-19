@@ -130,6 +130,20 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <id>postgres-kubernetes</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <configuration>
+                            <propertyFile>src/main/resources/db/config/postgres-kubernetes.properties</propertyFile>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
 </project>
