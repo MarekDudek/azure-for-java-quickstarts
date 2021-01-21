@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: postgres-config
+          volumeMounts:
+            - name: azure-disk-static
+              mountPath: /var/lib/postgresql/data/
+      volumes:
+        - name: azure-disk-static
+          azureDisk:
+            kind: Managed
+            diskName: disk-for-kubernetes
+            diskURI: /subscriptions/24e956c0-ba48-45c7-9add-4d903401f23b/resourceGroups/MC_kubernetes-demo-rg_kubernetes-demo_westeurope/providers/Microsoft.Compute/disks/disk-for-kubernetes
