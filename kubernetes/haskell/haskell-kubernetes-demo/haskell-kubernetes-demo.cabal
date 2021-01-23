@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 757d3277c7189c6614666b1c7ce4bd9f1e45425be002064525d31a77e5a10a83
+-- hash: ce9f990be810761df026e3664c2fc12334c61e553c03227b2918e2854936f804
 
 name:           haskell-kubernetes-demo
 version:        0.1.0.0
@@ -35,6 +35,7 @@ library
   build-depends:
       base >=4.7 && <5
     , command
+    , yaml
   default-language: Haskell2010
 
 executable haskell-kubernetes-demo-exe
@@ -48,6 +49,7 @@ executable haskell-kubernetes-demo-exe
       base >=4.7 && <5
     , command
     , haskell-kubernetes-demo
+    , yaml
   default-language: Haskell2010
 
 test-suite haskell-kubernetes-demo-test
@@ -62,4 +64,5 @@ test-suite haskell-kubernetes-demo-test
       base >=4.7 && <5
     , command
     , haskell-kubernetes-demo
+    , yaml
   default-language: Haskell2010
