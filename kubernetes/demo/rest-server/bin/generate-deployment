@@ -1,0 +1,16 @@
+#!/usr/bin/env stack
+{- stack script
+ --resolver lts-16.31
+ --install-ghc
+ --package "command"
+ --ghc-options -Wall
+-}
+{-# LANGUAGE DataKinds, TypeOperators, TypeApplications #-}
+
+import System.Command
+
+main :: IO ()
+main = do
+    putStrLn "I'm generating deployment"
+    Stdout out <- cmd "kubectl create deployment rest-server --image marekdudek/rest-server --port 8082 -o yaml --dry-run=client"
+    writeFile "./kubernetes/rest-server-deployment-2.yaml" out
