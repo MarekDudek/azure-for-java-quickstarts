@@ -42,6 +42,9 @@ packages:
 #
 # extra-deps: []
 
+extra-deps:
+  - command-0.1.1@sha256:5232b98c195bc3b8a6f35c55ccd2fa424abe355ca54cfcd836bbe7e494834773,1110
+
 # Override default flag values for local packages and extra-deps
 # flags: {}
 

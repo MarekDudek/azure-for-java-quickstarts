@@ -1,6 +1,8 @@
 module Main where
 
 import Lib
+import System.Command
 
 main :: IO ()
-main = someFunc
+main = do
+  cmd "kubectl config view"
