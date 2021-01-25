@@ -22,17 +22,20 @@
       * default for PostgreSQL is 5432, let's not use it to avoid confusion
       * currently, all instances use it, 
         * it can be changed only by editing file on disk? 
-      * 5431 - __postgres__ exposes service with this TCP port    
+      * 5431 - __postgres__ exposes **K8S** `Service` with this TCP port under `postgres` name
+        also, coincidentally, Docker exposes this port in `docker.sh`, but on localhost
       * 5439 - kubernetes-outside, Spring's profile for running 
         local __rest-server__ against DB on _minikube_
         * `port-forward.sh` script uses it
             * only for DB installed on *K8S*
             * a local instance requires nothing
             * PostgreSQL Azure perhaps does, only   
+        * this description is slightly wrong, could work foth on _minikube_ and _Azure_
     * find better convention for ports
-      * local instance
+      * a local instance: 5432
       * **K8S** `Service` 15432 instead of 5431, used internally by __rest-server__ 
         with `postgres-kubernetes` profile
+      * **Docker** service - ?  
       * 15401, 15402
     * point of flexibility in `kustomization`
   * can be solved with **K8S**'s `Job` object
