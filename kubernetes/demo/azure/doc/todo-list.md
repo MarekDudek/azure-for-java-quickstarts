@@ -2,6 +2,19 @@
 
 ## Automate everything
 
+### To-do list
+
+1. ~~deploy to _minikube_~~
+   
+1. copy Several Nines' recommendation
+1. deploy it to _minikube_
+1. deploy it to _AKS_
+1. create Pod with all `Persistent Volume`s mounted
+1. create `Persistent Volume` and the rest with Azure's recommendation, static disc
+1. create three other options and deploy to _AKS_
+1. all with scripts
+1. configure with `kustomize`
+
 ### Manual steps necessary now
 
 * __postgres__ `create-deployment.sh` is good for _minikube_, 
