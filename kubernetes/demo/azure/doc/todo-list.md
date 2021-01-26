@@ -5,6 +5,7 @@
 ### To-do list
 
 1. ~~deploy to _minikube_~~
+1. automate deployment to _minikube_   
 1. copy Several Nines' recommendation
 1. deploy it to _minikube_
 1. deploy it to _AKS_
@@ -155,3 +156,24 @@ Deployment
 
 1. (optional) `./bin/generate-deployment.sh`
 1. `./bin/create-deployment.sh`
+1. (optional) `./bin/follow-logs.sh`
+
+Rollback
+
+1. (optional) `./bin/generate-deployment.sh`
+1. (optional) `./bin/follow-logs.sh`
+1. `./bin/delete-deployment.sh`
+
+#### __rest-client__
+
+Deployment
+
+1. (optional) `./bin/generate-deployment.sh`
+1. `./bin/create-deployment.sh`
+1. (optional) `./bin/follow-logs.sh`
+
+Rollback
+
+1. (optional) `./bin/generate-deployment.sh`
+1. (optional) `./bin/follow-logs.sh`
+1. `./bin/delete-deployment.sh`
