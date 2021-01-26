@@ -5,7 +5,7 @@
 ### To-do list
 
 1. ~~deploy to _minikube_~~
-1. automate deployment to _minikube_   
+1. ~~automate deployment to _minikube_~~   
 1. copy Several Nines' recommendation
 1. deploy it to _minikube_
 1. deploy it to _AKS_
