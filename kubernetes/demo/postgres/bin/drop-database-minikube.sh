@@ -10,7 +10,7 @@ pushd ../kubernetes
 
 POD=$(kubectl get pod --selector=app=postgres -o jsonpath='{.items[*].metadata.name}')
 
-kubectl exec "${POD}" -- dropdb   --echo rest-server -U postgres -h localhost
-kubectl exec "${POD}" -- dropuser --echo rest-server -U postgres -h localhost
+kubectl exec "${POD}" -- dropdb     --echo -U postgres -h localhost rest-server
+kubectl exec "${POD}" -- dropuser   --echo -U postgres -h localhost rest-server
 
 popd

@@ -10,7 +10,7 @@ pushd ../kubernetes
 
 POD=$(kubectl get pod --selector=app=postgres -o jsonpath='{.items[*].metadata.name}')
 
-kubectl exec "${POD}" -- createuser --echo rest-server -U postgres -h localhost
-kubectl exec "${POD}" -- createdb   --echo --owner=rest-server rest-server -U postgres -h localhost
+kubectl exec "${POD}" -- createuser --echo -U postgres -h localhost rest-server
+kubectl exec "${POD}" -- createdb   --echo -U postgres -h localhost rest-server --owner=rest-server
 
 popd
