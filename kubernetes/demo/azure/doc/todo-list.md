@@ -133,9 +133,18 @@
 
 ### `minikube` with Several Nines' recommendations
 
-__postgress__
+#### __postgress__
 
-1. `./bin/generate-deployment.sh`, check no changes
+##### Deployment
+
+1. (optional) `./bin/generate-deployment.sh`, check no changes
 1. `./bin/create-deployment-minikube.sh`, wait for _DB_ to initialize
-1. (optional) `kubectl logs -f postgres postgres-`
+1. (optional) `./bin/follow-logs.sh`
 1. `./bin/create-database-minikube.sh`
+
+##### Rollback
+
+1. (optional) `./bin/generate-deployment.sh`, check no changes
+1. (optional) `./bin/follow-logs.sh`
+1. (optional) `./bin/drop-database-minikube.sh`
+1. `./bin/delete-deployment-minikube.sh`
