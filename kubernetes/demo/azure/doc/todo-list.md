@@ -6,8 +6,8 @@
 
 1. ~~deploy to _minikube_~~
 1. ~~automate deployment to _minikube_~~   
-1. copy Several Nines' recommendation
-1. deploy it to _minikube_
+1. ~~copy Several Nines' recommendation~~
+1. ~~deploy it to _minikube_~~
 1. deploy it to _AKS_
 1. create Pod with all `Persistent Volume`s mounted
 1. create `Persistent Volume` and the rest with Azure's recommendation, static disc

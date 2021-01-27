@@ -2,7 +2,7 @@
 
 ## __azure__
 
-
+1. `./bin/create-resource-group.sh`
 
 ## __postgres__
 
