@@ -10,7 +10,8 @@ pushd ../kubernetes
 
 kubectl delete -f "${SERVICE}"
 kubectl delete -f "${DEPLOYMENT}"
-kubectl delete -f "${STORAGE}"
+kubectl delete -f "${CLAIM}"
+kubectl delete -f "${VOLUME}"
 kubectl delete -f "${CONFIG}"
 
 popd ; popd
