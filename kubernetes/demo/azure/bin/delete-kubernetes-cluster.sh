@@ -7,6 +7,6 @@ set -euox pipefail
 pushd "${THIS_DIR}"
 source common.sh
 
-time az group delete --name "${RESOURCE_GROUP}" --yes
+time az aks delete --resource-group "${RESOURCE_GROUP}" --name "${CLUSTER}" --yes
 
 popd

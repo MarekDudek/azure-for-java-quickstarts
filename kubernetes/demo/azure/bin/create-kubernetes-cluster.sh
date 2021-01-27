@@ -7,10 +7,6 @@ set -euox pipefail
 pushd "${THIS_DIR}"
 source common.sh
 
-az aks create \
-  --resource-group "${RESOURCE_GROUP}" \
-  --name "${CLUSTER}" \
-  --kubernetes-version 1.18.14 \
-  --generate-ssh-keys
+time az aks create --resource-group "${RESOURCE_GROUP}" --name "${CLUSTER}" --kubernetes-version 1.18.14 --generate-ssh-keys
 
 popd

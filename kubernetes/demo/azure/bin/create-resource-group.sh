@@ -7,6 +7,6 @@ set -euox pipefail
 pushd "${THIS_DIR}"
 source common.sh
 
-az group create --name "${RESOURCE_GROUP}" --location "${LOCATION}"
+time az group create --name "${RESOURCE_GROUP}" --location "${LOCATION}"
 
 popd

@@ -8,11 +8,14 @@
 1. ~~automate deployment to _minikube_~~   
 1. ~~copy Several Nines' recommendation~~
 1. ~~deploy it to _minikube_~~
-1. deploy it to _AKS_
+1. ~~deploy it to _AKS_~~
+1. ~~automate _Azure_ commands~~   
+1. ~~time _Azure_ commands~~
+1. automate waiting for DB   
 1. create Pod with all `Persistent Volume`s mounted
 1. create `Persistent Volume` and the rest with Azure's recommendation, static disc
 1. create three other options and deploy to _AKS_
-1. all with scripts
+1. create persistence with _AKS_-provided storage classes
 1. configure with `kustomize`
 
 ### Manual steps necessary now
