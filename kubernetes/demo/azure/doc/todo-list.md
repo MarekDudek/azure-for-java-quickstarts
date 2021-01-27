@@ -132,7 +132,7 @@
 
 ## Deployments
 
-### `minikube` with Several Nines' recommendations
+### `minikube` with Several Nines' recommendations (changed)
 
 __postgress__
 
