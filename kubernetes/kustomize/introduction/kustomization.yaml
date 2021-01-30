@@ -1,0 +1,5 @@
+commonLabels:
+  owner: Marek Dudek
+resources:
+- deployment.yaml
+- service.yaml
