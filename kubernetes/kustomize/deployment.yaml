@@ -21,6 +21,6 @@ spec:
       - image: nginx
         name: nginx
         ports:
-        - containerPort: 8082
+        - containerPort: 80
         resources: {}
 status: {}

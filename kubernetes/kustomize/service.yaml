@@ -7,10 +7,10 @@ metadata:
   name: nginx
 spec:
   ports:
-  - name: 7072-8082
+  - name: 7072-80
     port: 7072
     protocol: TCP
-    targetPort: 8082
+    targetPort: 80
   selector:
     app: nginx
   type: NodePort
