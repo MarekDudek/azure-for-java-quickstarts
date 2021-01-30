@@ -10,12 +10,19 @@ spec:
   - args:
     - /bin/sh
     - -c
-    - while true; do sleep 5; done
+    - while true; do sleep 1; done
     image: busybox
     name: busybox
     ports:
     - containerPort: 8080
     resources: {}
+    volumeMounts:
+      - mountPath: /mnt/postgredb
+        name: postgredb
   dnsPolicy: ClusterFirst
   restartPolicy: Always
+  volumes:
+    - name: postgredb
+      persistentVolumeClaim:
+        claimName: postgres-persistent-volume-claim
 status: {}
