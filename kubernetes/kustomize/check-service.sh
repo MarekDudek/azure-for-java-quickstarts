@@ -6,12 +6,12 @@ set -euox pipefail
 
 pushd "${THIS_DIR}"
 
-kubectl port-forward service/nginx 8080:7072 &>/dev/null &
+kubectl port-forward service/nginx 8080:7072 &> /dev/null &
 PID=$!
 
-sleep 10
+sleep 1
 
-wget localhost:8080
+wget localhost:8080 -O /dev/null -o /dev/null
 
 kill ${PID}
 
