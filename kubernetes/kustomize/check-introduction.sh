@@ -2,16 +2,17 @@
 THIS_FILE=$(readlink -f "$0")
 THIS_DIR=$(dirname "${THIS_FILE}")
 IFS=$'\n\t'
-set -euox pipefail
+set -euo pipefail
+pushd "${THIS_DIR}" &> /dev/null
+set -x
 
-pushd "${THIS_DIR}"
 
 kubectl port-forward service/nginx 8080:7072 &> /dev/null &
 PID=$!
 sleep 1
 
 wget localhost:8080 -O /dev/null -o /dev/null
-
 kill ${PID}
 
-popd
+
+popd &> /dev/null

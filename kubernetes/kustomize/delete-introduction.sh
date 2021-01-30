@@ -2,12 +2,14 @@
 THIS_FILE=$(readlink -f "$0")
 THIS_DIR=$(dirname "${THIS_FILE}")
 IFS=$'\n\t'
-set -euox pipefail
+set -euo pipefail
+pushd "${THIS_DIR}" &> /dev/null
+set -x
 
-pushd "${THIS_DIR}"
 
 kubectl delete -f ./introduction/deployment.yaml
 kubectl delete -f ./introduction/service.yaml
 
-popd
+
+popd &> /dev/null
 
