@@ -3,24 +3,22 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: web-server
-  name: web-server
+    app: web-client
+  name: web-client
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: web-server
+      app: web-client
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: web-server
+        app: web-client
     spec:
       containers:
-      - image: nginx
-        name: nginx
-        ports:
-        - containerPort: 80
+      - image: alpine
+        name: alpine
         resources: {}
 status: {}
