@@ -1,9 +1,9 @@
 #!/bin/bash
 SCRIPT=$(readlink -f "$0")
-PARENT=$(dirname "${SCRIPT}")
-PARENT_REL=$(realpath --relative-to=. "${PARENT}")
+DIR=$(dirname "${SCRIPT}")
+DIR=$(realpath --relative-to=. "${DIR}")
 IFS=$'\n\t'
 set -euxo pipefail
 
 
-kubectl kustomize "${PARENT_REL}"/k8s
+kubectl kustomize "${DIR}"/k8s
