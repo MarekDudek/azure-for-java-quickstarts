@@ -7,7 +7,6 @@ set -euox pipefail
 pushd "${THIS_DIR}"
 
 kubectl create deployment nginx --image=nginx --port=80 -o yaml --dry-run=client > ./introduction/deployment.yaml
-kubectl create service nodeport nginx --tcp=7072:80 -o yaml --dry-run=client > ./introduction/service.yaml
 
 popd
 
