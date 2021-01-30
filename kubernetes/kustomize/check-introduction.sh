@@ -7,12 +7,13 @@ pushd "${THIS_DIR}" &> /dev/null
 set -x
 
 
-kubectl port-forward service/nginx 8080:7072 &> /dev/null &
+kubectl port-forward service/nginx 8081:7072 &
 PID=$!
 sleep 1
 
-wget localhost:8080 -O /dev/null -o /dev/null
+wget localhost:8081 -O /dev/null
+
 kill ${PID}
 
 
-popd &> /dev/null
+popd
