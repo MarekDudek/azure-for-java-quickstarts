@@ -6,6 +6,8 @@ set -euox pipefail
 
 pushd "${THIS_DIR}"
 
-kubectl kustomize ./introduction/
+kubectl delete -f ./introduction/deployment.yaml
+kubectl delete -f ./introduction/service.yaml
 
 popd
+
