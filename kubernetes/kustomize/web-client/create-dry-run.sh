@@ -7,4 +7,4 @@ set -euxo pipefail
 
 
 NAME=web-client
-kubectl create deployment ${NAME} --image=alpine -o yaml --dry-run=client > "${DIR}"/k8s/deployment.yaml
+kubectl create deployment ${NAME} --image=alpine -o yaml --dry-run=client > "${DIR}"/k8s/deployment.yaml -- sleep 300

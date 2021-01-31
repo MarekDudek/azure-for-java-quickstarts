@@ -6,9 +6,9 @@ IFS=$'\n\t'
 set -euxo pipefail
 
 
-kubectl port-forward service/nginx 8081:7072 &
+kubectl port-forward service/web-server 8081:7072 &
 PID=$!
 sleep 1
 
-wget localhost:8081 -O /dev/null
+wget localhost:8081 -O-
 kill ${PID}

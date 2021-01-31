@@ -18,7 +18,10 @@ spec:
         app: web-client
     spec:
       containers:
-      - image: alpine
+      - command:
+        - sleep
+        - "300"
+        image: alpine
         name: alpine
         resources: {}
 status: {}

@@ -6,5 +6,4 @@ IFS=$'\n\t'
 set -euxo pipefail
 
 
-kubectl get all -l app=web-server
-kubectl logs -f -l app=web-server
+kubectl delete -f "${DIR}"/k8s/deployment.yaml
