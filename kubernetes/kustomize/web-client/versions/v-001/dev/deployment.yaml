@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    creator: Marek Dudek
+  creationTimestamp: null
+  labels:
+    app: web-client
+    owner: mdudek
+    variant: development
+  name: web-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-client
+      owner: mdudek
+      variant: development
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        creator: Marek Dudek
+      creationTimestamp: null
+      labels:
+        app: web-client
+        owner: mdudek
+        variant: development
+    spec:
+      containers:
+      - command:
+        - /bin/sh
+        - -c
+        - |2
+
+          echo Querying web server
+          while true;
+          do
+            wget web-server:7072 -O-
+            sleep 1
+          done
+        image: alpine:latest
+        name: alpine
+        resources: {}
+status: {}
