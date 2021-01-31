@@ -29,7 +29,7 @@ spec:
             wget web-server:7072 -O-
             sleep 1
           done
-        image: alpine
+        image: alpine:latest
         name: alpine
         resources: {}
 status: {}
