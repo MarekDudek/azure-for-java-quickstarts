@@ -6,4 +6,4 @@ commonAnnotations:
   creator: Marek Dudek
 resources:
 - deployment.yaml
-- service.yaml
+- nodeport-service.yaml

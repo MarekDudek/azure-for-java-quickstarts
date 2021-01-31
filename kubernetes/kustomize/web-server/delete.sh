@@ -7,4 +7,4 @@ set -euxo pipefail
 
 
 kubectl delete -f "${DIR}"/app/base/deployment.yaml
-kubectl delete -f "${DIR}"/app/base/service.yaml
+kubectl delete -f "${DIR}"/app/base/nodeport-service.yaml
