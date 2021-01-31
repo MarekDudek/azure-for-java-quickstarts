@@ -5,9 +5,10 @@ DIR=$(realpath --relative-to=. "${DIR}")
 IFS=$'\n\t'
 set -euxo pipefail
 
-rm -fr "${DIR}"/build/*
-mkdir "${DIR}"/build/production
-mkdir "${DIR}"/build/development
+
+rm -fr "${DIR}"/build/
+mkdir -p "${DIR}"/build/production
+mkdir -p "${DIR}"/build/development
 
 kubectl kustomize "${DIR}"/app/overlays/production  > "${DIR}"/build/production/production.yaml
 kubectl kustomize "${DIR}"/app/overlays/development > "${DIR}"/build/development/development.yaml
