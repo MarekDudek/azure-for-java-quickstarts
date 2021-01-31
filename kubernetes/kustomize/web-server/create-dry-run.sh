@@ -8,4 +8,5 @@ set -euxo pipefail
 
 NAME=web-server
 kubectl create deployment ${NAME} --image=nginx:stable --port=80 -o yaml --dry-run=client > "${DIR}"/app/base/deployment.yaml
-kubectl create service nodeport ${NAME} --tcp=7072:80            -o yaml --dry-run=client > "${DIR}"/app/base/nodeport-service.yaml
+kubectl create service nodeport ${NAME} --tcp=7072:80 -o yaml --dry-run=client > "${DIR}"/app/base/nodeport-service.yaml
+kubectl create service loadbalancer ${NAME}-loadbalancer --tcp=7072:80  -o yaml --dry-run=client > "${DIR}"/app/base/loadbalancer-service.yaml

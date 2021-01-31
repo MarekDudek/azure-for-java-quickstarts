@@ -7,3 +7,4 @@ commonAnnotations:
 resources:
 - deployment.yaml
 - nodeport-service.yaml
+- loadbalancer-service.yaml

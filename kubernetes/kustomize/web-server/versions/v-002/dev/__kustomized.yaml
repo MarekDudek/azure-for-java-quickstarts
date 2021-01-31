@@ -1,0 +1,86 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    creator: Marek Dudek
+  creationTimestamp: null
+  labels:
+    app: web-server-loadbalancer
+    owner: mdudek
+    variant: development
+  name: dev-web-server-loadbalancer
+spec:
+  ports:
+  - name: 7072-80
+    port: 7072
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: web-server-loadbalancer
+    owner: mdudek
+    variant: development
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    creator: Marek Dudek
+  creationTimestamp: null
+  labels:
+    app: web-server
+    owner: mdudek
+    variant: development
+  name: dev-web-server
+spec:
+  ports:
+  - name: 7072-80
+    port: 7072
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: web-server
+    owner: mdudek
+    variant: development
+  type: NodePort
+status:
+  loadBalancer: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    creator: Marek Dudek
+  creationTimestamp: null
+  labels:
+    app: web-server
+    owner: mdudek
+    variant: development
+  name: dev-web-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-server
+      owner: mdudek
+      variant: development
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        creator: Marek Dudek
+      creationTimestamp: null
+      labels:
+        app: web-server
+        owner: mdudek
+        variant: development
+    spec:
+      containers:
+      - image: nginx:latest
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
