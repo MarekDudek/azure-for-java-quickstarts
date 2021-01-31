@@ -1,0 +1,4 @@
+commonLabels:
+  variant: development
+bases:
+- ../../base

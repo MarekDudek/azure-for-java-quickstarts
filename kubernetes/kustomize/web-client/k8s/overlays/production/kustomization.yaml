@@ -1,0 +1,4 @@
+commonLabels:
+  variant: production
+bases:
+- ../../base

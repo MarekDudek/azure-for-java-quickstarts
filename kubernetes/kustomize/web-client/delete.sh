@@ -6,4 +6,4 @@ IFS=$'\n\t'
 set -euxo pipefail
 
 
-kubectl delete -f "${DIR}"/k8s/deployment.yaml
+kubectl delete -f "${DIR}"/k8s/base/deployment.yaml

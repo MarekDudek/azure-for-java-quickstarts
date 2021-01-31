@@ -7,5 +7,5 @@ set -euxo pipefail
 
 
 NAME=web-server
-kubectl create deployment ${NAME} --image=nginx --port=80 -o yaml --dry-run=client > "${DIR}"/k8s/deployment.yaml
-kubectl create service nodeport ${NAME} --tcp=7072:80     -o yaml --dry-run=client > "${DIR}"/k8s/service.yaml
+kubectl create deployment ${NAME} --image=nginx --port=80 -o yaml --dry-run=client > "${DIR}"/k8s/base/deployment.yaml
+kubectl create service nodeport ${NAME} --tcp=7072:80     -o yaml --dry-run=client > "${DIR}"/k8s/base/service.yaml

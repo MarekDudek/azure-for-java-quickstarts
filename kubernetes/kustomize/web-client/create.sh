@@ -6,4 +6,4 @@ IFS=$'\n\t'
 set -euxo pipefail
 
 
-kubectl create -f "${DIR}"/k8s/deployment.yaml
+kubectl create -f "${DIR}"/k8s/base/deployment.yaml

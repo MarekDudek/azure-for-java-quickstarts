@@ -6,4 +6,5 @@ IFS=$'\n\t'
 set -euxo pipefail
 
 
-kubectl kustomize "${DIR}"/k8s > "${DIR}"/build/kustomized.yaml
+kubectl kustomize "${DIR}"/k8s/overlays/production  > "${DIR}"/build/production.yaml
+kubectl kustomize "${DIR}"/k8s/overlays/development > "${DIR}"/build/development.yaml
