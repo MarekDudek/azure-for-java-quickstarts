@@ -22,7 +22,7 @@ csplit --prefix=manifest- --suffix="%d.yaml" --suppress-matched --elide-empty-fi
 mv manifest-0.yaml deployment.yaml
 popd
 
-VERSION="001"
+VERSION="002"
 SNAPSHOT="${DIR}"/versions/v-${VERSION}
 rm -rf "${SNAPSHOT}" && mkdir -p "${SNAPSHOT}"
 cp --recursive "${DIR}"/build/* "${SNAPSHOT}"

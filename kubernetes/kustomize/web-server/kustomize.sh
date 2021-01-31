@@ -24,7 +24,7 @@ mv manifest-0.yaml nodeport-service.yaml
 mv manifest-1.yaml deployment.yaml
 popd
 
-VERSION="001"
+VERSION="002"
 SNAPSHOT="${DIR}"/versions/v-${VERSION}
 rm -rf "${SNAPSHOT}" && mkdir -p "${SNAPSHOT}"
 cp --recursive "${DIR}"/build/* "${SNAPSHOT}"
