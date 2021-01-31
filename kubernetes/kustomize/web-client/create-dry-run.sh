@@ -7,7 +7,7 @@ set -euxo pipefail
 
 
 NAME=web-client
-kubectl create deployment ${NAME} --image=alpine:latest -o yaml --dry-run=client > "${DIR}"/app/base/deployment.yaml -- /bin/sh -c "
+kubectl create deployment ${NAME} --image=alpine:3.13.1 -o yaml --dry-run=client > "${DIR}"/app/base/deployment.yaml -- /bin/sh -c "
 echo Querying web server
 while true;
 do
