@@ -5,16 +5,16 @@ metadata:
     creator: Marek Dudek
   creationTimestamp: null
   labels:
-    app: web-server
+    app: web-client
     owner: mdudek
     variant: development
-  name: dev-web-server
+  name: web-client
   namespace: dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: web-server
+      app: web-client
       owner: mdudek
       variant: development
   strategy: {}
@@ -24,14 +24,23 @@ spec:
         creator: Marek Dudek
       creationTimestamp: null
       labels:
-        app: web-server
+        app: web-client
         owner: mdudek
         variant: development
     spec:
       containers:
-      - image: nginx:latest
-        name: nginx
-        ports:
-        - containerPort: 80
+      - command:
+        - /bin/sh
+        - -c
+        - |2
+
+          echo Querying web server
+          while true;
+          do
+            wget web-server:7072 -O-
+            sleep 1
+          done
+        image: alpine:latest
+        name: alpine
         resources: {}
 status: {}

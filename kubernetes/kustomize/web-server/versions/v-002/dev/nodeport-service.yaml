@@ -9,6 +9,7 @@ metadata:
     owner: mdudek
     variant: development
   name: dev-web-server
+  namespace: dev
 spec:
   ports:
   - name: 7072-80

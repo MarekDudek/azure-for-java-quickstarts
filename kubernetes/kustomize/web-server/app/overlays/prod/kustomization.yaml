@@ -12,3 +12,5 @@ images:
 
 commonLabels:
   variant: production
+
+namespace: prod

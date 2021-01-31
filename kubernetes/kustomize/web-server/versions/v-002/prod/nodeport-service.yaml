@@ -9,6 +9,7 @@ metadata:
     owner: mdudek
     variant: production
   name: web-server
+  namespace: prod
 spec:
   ports:
   - name: 7072-80

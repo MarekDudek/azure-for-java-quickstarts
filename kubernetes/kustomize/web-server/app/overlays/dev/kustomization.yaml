@@ -12,3 +12,5 @@ namePrefix: dev-
 
 commonLabels:
   variant: development
+
+namespace: dev

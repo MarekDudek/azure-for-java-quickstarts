@@ -9,6 +9,7 @@ metadata:
     owner: mdudek
     variant: production
   name: web-server-loadbalancer
+  namespace: prod
 spec:
   ports:
   - name: 7072-80
@@ -34,6 +35,7 @@ metadata:
     owner: mdudek
     variant: production
   name: web-server
+  namespace: prod
 spec:
   ports:
   - name: 7072-80
@@ -59,6 +61,7 @@ metadata:
     owner: mdudek
     variant: production
   name: web-server
+  namespace: prod
 spec:
   replicas: 1
   selector:
