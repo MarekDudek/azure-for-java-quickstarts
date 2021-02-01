@@ -9,22 +9,24 @@ source "$DIR"/../splitting.sh
 
 rm -fr "$DIR"/build/
 
-mkdir -p "$DIR"/build/prod
+PROD_BUILD="$DIR"/build/prod
+mkdir -p "$PROD_BUILD"
 kustomize build \
   --load_restrictor=none \
   --reorder=none \
-  --output "$DIR"/build/prod/__kustomized.yaml \
+  --output "$PROD_BUILD"/__kustomized.yaml \
   "$DIR"/app/overlays/prod
-split "$DIR"/build/prod __kustomized.yaml \
+split "$PROD_BUILD" __kustomized.yaml \
   deployment.yaml
 
-mkdir -p "$DIR"/build/dev
+DEV_BUILD="$DIR"/build/dev
+mkdir -p "$DEV_BUILD"
 kustomize build \
   --load_restrictor=none \
   --reorder=none \
-  --output "$DIR"/build/dev/__kustomized.yaml \
+  --output "$DEV_BUILD"/__kustomized.yaml \
   "$DIR"/app/overlays/dev
-split "$DIR"/build/dev __kustomized.yaml \
+split "$DEV_BUILD" __kustomized.yaml \
   deployment.yaml
 
 SNAPSHOT="$DIR"/versions/v-002
