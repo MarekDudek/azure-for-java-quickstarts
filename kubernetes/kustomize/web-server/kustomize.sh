@@ -12,8 +12,8 @@ mkdir -p "${DIR}"/build/prod
 kustomize build --load_restrictor=none "${DIR}"/app/overlays/prod  > "${DIR}"/build/prod/__kustomized.yaml
 pushd "${DIR}"/build/prod
 csplit --prefix=manifest- --suffix="%d.yaml" --suppress-matched --elide-empty-files __kustomized.yaml '/---/' '{*}'
-mv manifest-0.yaml loadbalancer-service.yaml
-mv manifest-1.yaml nodeport-service.yaml
+mv manifest-0.yaml nodeport-service.yaml
+mv manifest-1.yaml loadbalancer-service.yaml
 mv manifest-2.yaml deployment.yaml
 popd
 
@@ -21,8 +21,8 @@ mkdir -p "${DIR}"/build/dev
 kustomize build --load_restrictor=none "${DIR}"/app/overlays/dev > "${DIR}"/build/dev/__kustomized.yaml
 pushd "${DIR}"/build/dev
 csplit --prefix=manifest- --suffix="%d.yaml" --suppress-matched --elide-empty-files __kustomized.yaml '/---/' '{*}'
-mv manifest-0.yaml loadbalancer-service.yaml
-mv manifest-1.yaml nodeport-service.yaml
+mv manifest-0.yaml nodeport-service.yaml
+mv manifest-1.yaml loadbalancer-service.yaml
 mv manifest-2.yaml deployment.yaml
 popd
 

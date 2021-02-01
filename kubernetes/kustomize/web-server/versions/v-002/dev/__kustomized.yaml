@@ -5,32 +5,6 @@ metadata:
     creator: Marek Dudek
   creationTimestamp: null
   labels:
-    app: web-server-loadbalancer
-    owner: mdudek
-    variant: development
-  name: dev-web-server-loadbalancer
-  namespace: dev
-spec:
-  ports:
-  - name: 7072-80
-    port: 7072
-    protocol: TCP
-    targetPort: 80
-  selector:
-    app: web-server-loadbalancer
-    owner: mdudek
-    variant: development
-  type: LoadBalancer
-status:
-  loadBalancer: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    creator: Marek Dudek
-  creationTimestamp: null
-  labels:
     app: web-server
     owner: mdudek
     variant: development
@@ -48,6 +22,32 @@ spec:
     owner: mdudek
     variant: development
   type: NodePort
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    creator: Marek Dudek
+  creationTimestamp: null
+  labels:
+    app: web-server-loadbalancer
+    owner: mdudek
+    variant: development
+  name: dev-web-server-loadbalancer
+  namespace: dev
+spec:
+  ports:
+  - name: 7072-80
+    port: 7072
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: web-server-loadbalancer
+    owner: mdudek
+    variant: development
+  type: LoadBalancer
 status:
   loadBalancer: {}
 ---
