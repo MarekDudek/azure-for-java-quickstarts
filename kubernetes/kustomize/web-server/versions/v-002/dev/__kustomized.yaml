@@ -1,3 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    creator: Marek Dudek
+  creationTimestamp: null
+  labels:
+    app: web-server
+    owner: mdudek
+    variant: development
+  name: dev-web-server
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-server
+      owner: mdudek
+      variant: development
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        creator: Marek Dudek
+      creationTimestamp: null
+      labels:
+        app: web-server
+        owner: mdudek
+        variant: development
+    spec:
+      containers:
+      - image: nginx:latest
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -50,41 +88,3 @@ spec:
   type: LoadBalancer
 status:
   loadBalancer: {}
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  annotations:
-    creator: Marek Dudek
-  creationTimestamp: null
-  labels:
-    app: web-server
-    owner: mdudek
-    variant: development
-  name: dev-web-server
-  namespace: dev
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: web-server
-      owner: mdudek
-      variant: development
-  strategy: {}
-  template:
-    metadata:
-      annotations:
-        creator: Marek Dudek
-      creationTimestamp: null
-      labels:
-        app: web-server
-        owner: mdudek
-        variant: development
-    spec:
-      containers:
-      - image: nginx:latest
-        name: nginx
-        ports:
-        - containerPort: 80
-        resources: {}
-status: {}

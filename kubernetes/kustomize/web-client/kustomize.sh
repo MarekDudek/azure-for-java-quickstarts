@@ -9,14 +9,26 @@ set -euxo pipefail
 rm -fr "${DIR}"/build/
 
 mkdir -p "${DIR}"/build/prod
-kustomize build --load_restrictor=none "${DIR}"/app/overlays/prod  > "${DIR}"/build/prod/__kustomized.yaml
+
+kustomize build \
+  --load_restrictor=none \
+  --reorder=none \
+  --output "${DIR}"/build/prod/__kustomized.yaml \
+  "${DIR}"/app/overlays/prod
+
 pushd "${DIR}"/build/prod
 csplit --prefix=manifest- --suffix="%d.yaml" --suppress-matched --elide-empty-files __kustomized.yaml '/---/' '{*}'
 mv manifest-0.yaml deployment.yaml
 popd
 
 mkdir -p "${DIR}"/build/dev
-kustomize build --load_restrictor=none "${DIR}"/app/overlays/dev > "${DIR}"/build/dev/__kustomized.yaml
+
+kustomize build \
+  --load_restrictor=none \
+  --reorder=none \
+  --output "${DIR}"/build/dev/__kustomized.yaml \
+  "${DIR}"/app/overlays/dev
+
 pushd "${DIR}"/build/dev
 csplit --prefix=manifest- --suffix="%d.yaml" --suppress-matched --elide-empty-files __kustomized.yaml '/---/' '{*}'
 mv manifest-0.yaml deployment.yaml
