@@ -39,6 +39,7 @@ metadata:
 spec:
   ports:
   - name: 7072-80
+    nodePort: 30000
     port: 7072
     protocol: TCP
     targetPort: 80
