@@ -35,6 +35,6 @@ split "$DEV_BUILD" __kustomized.yaml \
   service-nodeport.yaml \
   service-loadbalancer.yaml
 
-SNAPSHOT="$DIR"/versions/v-002
+SNAPSHOT="$DIR"/versions/v-003
 rm -rf "$SNAPSHOT" ; mkdir -p "$SNAPSHOT"
 cp -r "$DIR"/build/* "$SNAPSHOT"
