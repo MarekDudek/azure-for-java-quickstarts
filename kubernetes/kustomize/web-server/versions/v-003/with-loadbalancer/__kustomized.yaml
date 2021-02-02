@@ -1,9 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    creator: Marek Dudek
   creationTimestamp: null
   labels:
     app: web-server
+    owner: mdudek
     variant: with-loadbalancer-service
   name: web-server
 spec:
@@ -11,13 +14,17 @@ spec:
   selector:
     matchLabels:
       app: web-server
+      owner: mdudek
       variant: with-loadbalancer-service
   strategy: {}
   template:
     metadata:
+      annotations:
+        creator: Marek Dudek
       creationTimestamp: null
       labels:
         app: web-server
+        owner: mdudek
         variant: with-loadbalancer-service
     spec:
       containers:
@@ -31,9 +38,12 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    creator: Marek Dudek
   creationTimestamp: null
   labels:
     app: web-server
+    owner: mdudek
     variant: with-loadbalancer-service
   name: web-server
 spec:
@@ -44,6 +54,7 @@ spec:
     targetPort: 80
   selector:
     app: web-server
+    owner: mdudek
     variant: with-loadbalancer-service
   type: LoadBalancer
 status:

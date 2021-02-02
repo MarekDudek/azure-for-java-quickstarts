@@ -9,5 +9,9 @@ images:
   - name: nginx
     newTag: latest
 
+commonAnnotations:
+  creator: Marek Dudek
+
 commonLabels:
   variant: with-nodeport-service
+  owner: mdudek

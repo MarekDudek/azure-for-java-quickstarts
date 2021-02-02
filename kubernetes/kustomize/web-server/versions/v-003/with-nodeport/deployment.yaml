@@ -1,9 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    creator: Marek Dudek
   creationTimestamp: null
   labels:
     app: web-server
+    owner: mdudek
     variant: with-nodeport-service
   name: web-server
 spec:
@@ -11,13 +14,17 @@ spec:
   selector:
     matchLabels:
       app: web-server
+      owner: mdudek
       variant: with-nodeport-service
   strategy: {}
   template:
     metadata:
+      annotations:
+        creator: Marek Dudek
       creationTimestamp: null
       labels:
         app: web-server
+        owner: mdudek
         variant: with-nodeport-service
     spec:
       containers:
