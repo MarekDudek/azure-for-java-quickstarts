@@ -4,15 +4,17 @@ metadata:
   creationTimestamp: null
   labels:
     app: web-server
+    variant: with-clusterip-service
   name: web-server
 spec:
   ports:
-  - name: 7073-80
-    port: 7073
+  - name: 7071-80
+    port: 7071
     protocol: TCP
     targetPort: 80
   selector:
     app: web-server
-  type: LoadBalancer
+    variant: with-clusterip-service
+  type: ClusterIP
 status:
   loadBalancer: {}

@@ -4,6 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: web-server
+    variant: with-loadbalancer-service
   name: web-server
 spec:
   ports:
@@ -13,6 +14,7 @@ spec:
     targetPort: 80
   selector:
     app: web-server
+    variant: with-loadbalancer-service
   type: LoadBalancer
 status:
   loadBalancer: {}

@@ -3,19 +3,11 @@ kind: Kustomization
 
 resources:
   - ../../base/deployment.yaml
-  - ../../base/service-nodeport.yaml
+  - ../../base/service-loadbalancer.yaml
 
 images:
   - name: nginx
     newTag: latest
 
-namePrefix: dev-
-
 commonLabels:
-  variant: development
-  owner: mdudek
-
-commonAnnotations:
-  creator: Marek Dudek
-
-namespace: dev
+  variant: with-loadbalancer-service

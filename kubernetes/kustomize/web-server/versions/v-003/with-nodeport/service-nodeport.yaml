@@ -4,15 +4,18 @@ metadata:
   creationTimestamp: null
   labels:
     app: web-server
+    variant: with-nodeport-service
   name: web-server
 spec:
   ports:
-  - name: 7073-80
-    port: 7073
+  - name: 7072-80
+    nodePort: 30000
+    port: 7072
     protocol: TCP
     targetPort: 80
   selector:
     app: web-server
-  type: LoadBalancer
+    variant: with-nodeport-service
+  type: NodePort
 status:
   loadBalancer: {}
