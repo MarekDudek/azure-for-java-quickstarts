@@ -5,21 +5,21 @@ metadata:
     creator: Marek Dudek
   creationTimestamp: null
   labels:
-    app: web-server-loadbalancer
+    app: web-server-clusterip
     owner: mdudek
-    variant: development
-  name: dev-web-server-loadbalancer
-  namespace: dev
+    variant: production
+  name: web-server-clusterip
+  namespace: prod
 spec:
   ports:
-  - name: 7073-80
-    port: 7073
+  - name: 7071-80
+    port: 7071
     protocol: TCP
     targetPort: 80
   selector:
-    app: web-server-loadbalancer
+    app: web-server-clusterip
     owner: mdudek
-    variant: development
-  type: LoadBalancer
+    variant: production
+  type: ClusterIP
 status:
   loadBalancer: {}

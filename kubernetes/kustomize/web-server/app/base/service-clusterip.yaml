@@ -3,16 +3,16 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: web-server-loadbalancer
-  name: web-server-loadbalancer
+    app: web-server-clusterip
+  name: web-server-clusterip
 spec:
   ports:
-  - name: 7073-80
-    port: 7073
+  - name: 7071-80
+    port: 7071
     protocol: TCP
     targetPort: 80
   selector:
-    app: web-server-loadbalancer
-  type: LoadBalancer
+    app: web-server-clusterip
+  type: ClusterIP
 status:
   loadBalancer: {}

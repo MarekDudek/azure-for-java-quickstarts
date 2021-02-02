@@ -12,8 +12,8 @@ metadata:
   namespace: prod
 spec:
   ports:
-  - name: 7072-80
-    port: 7072
+  - name: 7073-80
+    port: 7073
     protocol: TCP
     targetPort: 80
   selector:

@@ -43,6 +43,32 @@ metadata:
     creator: Marek Dudek
   creationTimestamp: null
   labels:
+    app: web-server-clusterip
+    owner: mdudek
+    variant: development
+  name: dev-web-server-clusterip
+  namespace: dev
+spec:
+  ports:
+  - name: 7071-80
+    port: 7071
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: web-server-clusterip
+    owner: mdudek
+    variant: development
+  type: ClusterIP
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    creator: Marek Dudek
+  creationTimestamp: null
+  labels:
     app: web-server
     owner: mdudek
     variant: development
@@ -77,8 +103,8 @@ metadata:
   namespace: dev
 spec:
   ports:
-  - name: 7072-80
-    port: 7072
+  - name: 7073-80
+    port: 7073
     protocol: TCP
     targetPort: 80
   selector:

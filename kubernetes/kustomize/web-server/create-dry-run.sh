@@ -13,11 +13,15 @@ kubectl create deployment $NAME \
   --port=80 \
   -o yaml --dry-run=client > "$BASE"/deployment.yaml
 
+kubectl create service clusterip $NAME-clusterip \
+  --tcp=7071:80 \
+  -o yaml --dry-run=client > "$BASE"/service-clusterip.yaml
+
 kubectl create service nodeport $NAME \
   --node-port=30000 \
   --tcp=7072:80 \
   -o yaml --dry-run=client > "$BASE"/service-nodeport.yaml
 
 kubectl create service loadbalancer $NAME-loadbalancer \
-  --tcp=7072:80  \
+  --tcp=7073:80  \
   -o yaml --dry-run=client > "$BASE"/service-loadbalancer.yaml

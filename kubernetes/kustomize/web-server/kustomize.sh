@@ -18,6 +18,7 @@ kustomize build \
   "$DIR"/app/overlays/prod
 split "$PROD_BUILD" __kustomized.yaml \
   deployment.yaml \
+  service-clusterip.yaml \
   service-nodeport.yaml \
   service-loadbalancer.yaml
 
@@ -30,6 +31,7 @@ kustomize build \
   "$DIR"/app/overlays/dev
 split "$DEV_BUILD" __kustomized.yaml \
   deployment.yaml \
+  service-clusterip.yaml \
   service-nodeport.yaml \
   service-loadbalancer.yaml
 
