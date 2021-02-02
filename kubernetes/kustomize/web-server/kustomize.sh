@@ -18,8 +18,8 @@ kustomize build \
   "$DIR"/app/overlays/prod
 split "$PROD_BUILD" __kustomized.yaml \
   deployment.yaml \
-  nodeport-service.yaml \
-  loadbalancer-service.yaml
+  service-nodeport.yaml \
+  service-loadbalancer.yaml
 
 DEV_BUILD="$DIR"/build/dev
 mkdir -p "$DEV_BUILD"
@@ -30,8 +30,8 @@ kustomize build \
   "$DIR"/app/overlays/dev
 split "$DEV_BUILD" __kustomized.yaml \
   deployment.yaml \
-  nodeport-service.yaml \
-  loadbalancer-service.yaml
+  service-nodeport.yaml \
+  service-loadbalancer.yaml
 
 SNAPSHOT="$DIR"/versions/v-002
 rm -rf "$SNAPSHOT" ; mkdir -p "$SNAPSHOT"

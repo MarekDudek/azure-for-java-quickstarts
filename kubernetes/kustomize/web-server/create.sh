@@ -7,4 +7,4 @@ set -euxo pipefail
 
 
 kubectl create -f "${DIR}"/app/base/deployment.yaml
-kubectl create -f "${DIR}"/app/base/nodeport-service.yaml
+kubectl create -f "${DIR}"/app/base/service-nodeport.yaml

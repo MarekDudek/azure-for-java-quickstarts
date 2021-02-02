@@ -16,8 +16,8 @@ kubectl create deployment $NAME \
 kubectl create service nodeport $NAME \
   --node-port=30000 \
   --tcp=7072:80 \
-  -o yaml --dry-run=client > "$BASE"/nodeport-service.yaml
+  -o yaml --dry-run=client > "$BASE"/service-nodeport.yaml
 
 kubectl create service loadbalancer $NAME-loadbalancer \
   --tcp=7072:80  \
-  -o yaml --dry-run=client > "$BASE"/loadbalancer-service.yaml
+  -o yaml --dry-run=client > "$BASE"/service-loadbalancer.yaml

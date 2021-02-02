@@ -6,5 +6,5 @@ commonAnnotations:
   creator: Marek Dudek
 resources:
 - deployment.yaml
-- nodeport-service.yaml
-- loadbalancer-service.yaml
+- service-nodeport.yaml
+- service-loadbalancer.yaml
