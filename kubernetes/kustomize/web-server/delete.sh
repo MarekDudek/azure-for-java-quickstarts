@@ -5,7 +5,6 @@ DIR=$(realpath --relative-to=. "${DIR}")
 IFS=$'\n\t'
 set -euxo pipefail
 
-
 SNAPSHOT="$DIR"/versions/v-003
 
 kubectl delete -f "${SNAPSHOT}"/with-clusterip/__kustomized.yaml
