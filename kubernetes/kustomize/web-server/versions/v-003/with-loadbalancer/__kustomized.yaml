@@ -8,7 +8,7 @@ metadata:
     app: web-server
     owner: mdudek
     variant: with-loadbalancer-service
-  name: web-server
+  name: web-server-lb
 spec:
   replicas: 1
   selector:
@@ -45,7 +45,7 @@ metadata:
     app: web-server
     owner: mdudek
     variant: with-loadbalancer-service
-  name: web-server
+  name: web-server-lb
 spec:
   ports:
   - name: 7073-80

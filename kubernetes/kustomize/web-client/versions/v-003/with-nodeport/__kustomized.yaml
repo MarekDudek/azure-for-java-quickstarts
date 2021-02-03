@@ -1,21 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
+  annotations:
+    creator: Marek Dudek
   labels:
     app: web-client
-  name: web-client
+    owner: mdudek
+    variant: with-nodeport-client
+  name: web-client-np
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: web-client
+      owner: mdudek
+      variant: with-nodeport-client
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
+      annotations:
+        creator: Marek Dudek
       labels:
         app: web-client
+        owner: mdudek
+        variant: with-nodeport-client
     spec:
       containers:
       - command:
@@ -29,7 +37,12 @@ spec:
             wget "$WEB_SERVER":"$PORT" -O-
             sleep 1
           done
-        image: alpine:3.13.1
+        env:
+        - name: WEB_SERVER
+          value: web-server-np
+        - name: PORT
+          value: "7072"
+        image: alpine:3.11.7
         name: alpine
         resources: {}
 status: {}

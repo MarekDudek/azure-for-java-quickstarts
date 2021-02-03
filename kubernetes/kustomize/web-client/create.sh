@@ -5,5 +5,8 @@ DIR=$(realpath --relative-to=. "${DIR}")
 IFS=$'\n\t'
 set -euxo pipefail
 
+SNAPSHOT="$DIR"/versions/v-003
 
-kubectl create -f "${DIR}"/app/base/deployment.yaml
+kubectl create -f "${SNAPSHOT}"/with-clusterip/__kustomized.yaml
+kubectl create -f "${SNAPSHOT}"/with-nodeport/__kustomized.yaml
+kubectl create -f "${SNAPSHOT}"/with-loadbalancer/__kustomized.yaml

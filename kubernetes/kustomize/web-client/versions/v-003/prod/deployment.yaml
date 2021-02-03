@@ -1,21 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    creator: Marek Dudek
   creationTimestamp: null
   labels:
     app: web-client
+    owner: mdudek
+    variant: production
   name: web-client
+  namespace: prod
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: web-client
+      owner: mdudek
+      variant: production
   strategy: {}
   template:
     metadata:
+      annotations:
+        creator: Marek Dudek
       creationTimestamp: null
       labels:
         app: web-client
+        owner: mdudek
+        variant: production
     spec:
       containers:
       - command:
@@ -29,7 +40,7 @@ spec:
             wget "$WEB_SERVER":"$PORT" -O-
             sleep 1
           done
-        image: alpine:3.13.1
+        image: alpine:3.11.7
         name: alpine
         resources: {}
 status: {}

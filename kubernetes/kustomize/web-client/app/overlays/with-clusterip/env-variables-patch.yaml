@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-client
+spec:
+  template:
+    spec:
+      containers:
+        - name: alpine
+          env:
+            - name: WEB_SERVER
+              value: web-server-cip
+            - name: PORT
+              value: "7071"

@@ -29,6 +29,37 @@ kustomize build \
 split "$DEV_BUILD" __kustomized.yaml \
   deployment.yaml
 
-SNAPSHOT="$DIR"/versions/v-002
+WITH_CLUSTERIP_BUILD="$DIR"/build/with-clusterip
+mkdir -p "$WITH_CLUSTERIP_BUILD"
+kustomize build \
+  --load_restrictor=none \
+  --reorder=none \
+  --output "$WITH_CLUSTERIP_BUILD"/__kustomized.yaml \
+  "$DIR"/app/overlays/with-clusterip
+split "$WITH_CLUSTERIP_BUILD" __kustomized.yaml \
+  deployment.yaml
+
+WITH_NODEPORT="$DIR"/build/with-nodeport
+mkdir -p "$WITH_NODEPORT"
+kustomize build \
+  --load_restrictor=none \
+  --reorder=none \
+  --output "$WITH_NODEPORT"/__kustomized.yaml \
+  "$DIR"/app/overlays/with-nodeport
+split "$WITH_NODEPORT" __kustomized.yaml \
+  deployment.yaml
+
+WITH_LOADBALANCER="$DIR"/build/with-loadbalancer
+mkdir -p "$WITH_LOADBALANCER"
+kustomize build \
+  --load_restrictor=none \
+  --reorder=none \
+  --output "$WITH_LOADBALANCER"/__kustomized.yaml \
+  "$DIR"/app/overlays/with-loadbalancer
+split "$WITH_LOADBALANCER" __kustomized.yaml \
+  deployment.yaml
+
+
+SNAPSHOT="$DIR"/versions/v-003
 rm -rf "$SNAPSHOT" ; mkdir -p "$SNAPSHOT"
 cp -r "$DIR"/build/* "$SNAPSHOT"

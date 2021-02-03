@@ -6,5 +6,8 @@ IFS=$'\n\t'
 set -euxo pipefail
 
 
-kubectl delete -f "${DIR}"/app/base/deployment.yaml
-kubectl delete -f "${DIR}"/app/base/nodeport-service.yaml
+SNAPSHOT="$DIR"/versions/v-003
+
+kubectl delete -f "${SNAPSHOT}"/with-clusterip/__kustomized.yaml
+kubectl delete -f "${SNAPSHOT}"/with-nodeport/__kustomized.yaml
+kubectl delete -f "${SNAPSHOT}"/with-loadbalancer/__kustomized.yaml

@@ -8,7 +8,7 @@ metadata:
     app: web-server
     owner: mdudek
     variant: with-nodeport-service
-  name: web-server
+  name: web-server-np
 spec:
   replicas: 1
   selector:

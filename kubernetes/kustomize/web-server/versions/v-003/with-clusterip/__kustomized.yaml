@@ -8,7 +8,7 @@ metadata:
     app: web-server
     owner: mdudek
     variant: with-clusterip-service
-  name: web-server
+  name: web-server-cip
 spec:
   replicas: 1
   selector:
@@ -45,7 +45,7 @@ metadata:
     app: web-server
     owner: mdudek
     variant: with-clusterip-service
-  name: web-server
+  name: web-server-cip
 spec:
   ports:
   - name: 7071-80

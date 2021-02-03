@@ -3,17 +3,20 @@ kind: Kustomization
 
 resources:
   - ../../base/deployment.yaml
-  - ../../base/service-loadbalancer.yaml
+
 
 images:
-  - name: nginx
-    newTag: latest
+  - name: alpine
+    newTag: 3.11.7
 
 commonAnnotations:
   creator: Marek Dudek
 
 commonLabels:
-  variant: with-loadbalancer-service
+  variant: with-nodeport-client
   owner: mdudek
 
-nameSuffix: -lb
+nameSuffix: -np
+
+patchesStrategicMerge:
+  - env-variables-patch.yaml

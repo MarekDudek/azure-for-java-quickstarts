@@ -14,7 +14,7 @@ kubectl create deployment $NAME \
 echo Querying web server
 while true;
 do
-  wget web-server:7072 -O-
+  wget \"\$WEB_SERVER\":\"\$PORT\" -O-
   sleep 1
 done
 "

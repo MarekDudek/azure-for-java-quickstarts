@@ -15,3 +15,5 @@ commonAnnotations:
 commonLabels:
   variant: with-clusterip-service
   owner: mdudek
+
+nameSuffix: -cip
