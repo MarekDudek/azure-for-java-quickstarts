@@ -8,13 +8,8 @@ set -euxo pipefail
 BASE="$DIR"/app/base
 NAME=web-client
 
+COMMAND=$(cat "$BASE/command.sh")
+
 kubectl create deployment $NAME \
-  --image=alpine:3.13.1 \
-  -o yaml --dry-run=client > "$BASE"/deployment.yaml -- /bin/sh -c "
-echo Querying web server
-while true;
-do
-  wget \"\$WEB_SERVER\":\"\$PORT\" -O-
-  sleep 1
-done
-"
+  --image=bash \
+  -o yaml --dry-run=client > "$BASE"/deployment.yaml -- /usr/local/bin/bash -c "$COMMAND"

@@ -20,14 +20,16 @@ spec:
     spec:
       containers:
       - command:
-        - /bin/sh
+        - /usr/local/bin/bash
         - -c
-        - |2
+        - |-
+          IFS=$'\n\t'
+          set -euxo pipefail
 
-          echo Querying web server
           while true;
           do
-            wget "$WEB_SERVER":"$PORT" -O-
+            date
+            wget --quiet --spider "$WEB_SERVER":"$PORT" || exit
             sleep 1
           done
         env:
@@ -35,7 +37,7 @@ spec:
           value: web-server-lb
         - name: PORT
           value: "7073"
-        image: alpine:3.13.1
-        name: alpine
+        image: bash
+        name: bash
         resources: {}
 status: {}
