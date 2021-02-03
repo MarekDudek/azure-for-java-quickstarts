@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: web-server
+    variant: with-loadbalancer-service
+  name: web-server-lb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-server
+      variant: with-loadbalancer-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: web-server
+        variant: with-loadbalancer-service
+    spec:
+      containers:
+      - image: nginx:stable
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}

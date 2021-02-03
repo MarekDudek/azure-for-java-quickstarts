@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: web-server
+    variant: with-loadbalancer-service
+  name: web-server-lb
+spec:
+  ports:
+  - name: 7073-80
+    port: 7073
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: web-server
+    variant: with-loadbalancer-service
+  type: LoadBalancer
+status:
+  loadBalancer: {}

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: web-server
+    variant: with-nodeport-service
+  name: web-server-np
+spec:
+  ports:
+  - name: 7072-80
+    nodePort: 30000
+    port: 7072
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: web-server
+    variant: with-nodeport-service
+  type: NodePort
+status:
+  loadBalancer: {}

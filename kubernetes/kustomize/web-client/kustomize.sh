@@ -60,6 +60,6 @@ split "$WITH_LOADBALANCER" __kustomized.yaml \
   deployment.yaml
 
 
-SNAPSHOT="$DIR"/versions/v-003
+SNAPSHOT="$DIR"/versions/v-004
 rm -rf "$SNAPSHOT" ; mkdir -p "$SNAPSHOT"
 cp -r "$DIR"/build/* "$SNAPSHOT"

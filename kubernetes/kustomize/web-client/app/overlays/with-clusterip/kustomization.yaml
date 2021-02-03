@@ -4,19 +4,10 @@ kind: Kustomization
 resources:
   - ../../base/deployment.yaml
 
-
-images:
-  - name: alpine
-    newTag: 3.11.7
-
-commonAnnotations:
-  creator: Marek Dudek
+nameSuffix: -cip
 
 commonLabels:
   variant: with-clusterip-client
-  owner: mdudek
-
-nameSuffix: -cip
 
 patchesStrategicMerge:
   - env-variables-patch.yaml

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-client
+    variant: with-clusterip-client
+  name: web-client-cip
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-client
+      variant: with-clusterip-client
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: web-client
+        variant: with-clusterip-client
+    spec:
+      containers:
+      - command:
+        - /bin/sh
+        - -c
+        - |2
+
+          echo Querying web server
+          while true;
+          do
+            wget "$WEB_SERVER":"$PORT" -O-
+            sleep 1
+          done
+        env:
+        - name: WEB_SERVER
+          value: web-server-cip
+        - name: PORT
+          value: "7071"
+        image: alpine:3.13.1
+        name: alpine
+        resources: {}
+status: {}

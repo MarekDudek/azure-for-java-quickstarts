@@ -4,19 +4,10 @@ kind: Kustomization
 resources:
   - ../../base/deployment.yaml
 
-
-images:
-  - name: alpine
-    newTag: 3.11.7
-
-commonAnnotations:
-  creator: Marek Dudek
+nameSuffix: -lb
 
 commonLabels:
   variant: with-loadbalancer-client
-  owner: mdudek
-
-nameSuffix: -lb
 
 patchesStrategicMerge:
   - env-variables-patch.yaml

@@ -5,15 +5,7 @@ resources:
   - ../../base/deployment.yaml
   - ../../base/service-loadbalancer.yaml
 
-images:
-  - name: nginx
-    newTag: latest
-
-commonAnnotations:
-  creator: Marek Dudek
+nameSuffix: -lb
 
 commonLabels:
   variant: with-loadbalancer-service
-  owner: mdudek
-
-nameSuffix: -lb

@@ -5,15 +5,7 @@ resources:
   - ../../base/deployment.yaml
   - ../../base/service-clusterip.yaml
 
-images:
-  - name: nginx
-    newTag: latest
-
-commonAnnotations:
-  creator: Marek Dudek
+nameSuffix: -cip
 
 commonLabels:
   variant: with-clusterip-service
-  owner: mdudek
-
-nameSuffix: -cip

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-client
+    variant: with-loadbalancer-client
+  name: web-client-lb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-client
+      variant: with-loadbalancer-client
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: web-client
+        variant: with-loadbalancer-client
+    spec:
+      containers:
+      - command:
+        - /bin/sh
+        - -c
+        - |2
+
+          echo Querying web server
+          while true;
+          do
+            wget "$WEB_SERVER":"$PORT" -O-
+            sleep 1
+          done
+        env:
+        - name: WEB_SERVER
+          value: web-server-lb
+        - name: PORT
+          value: "7073"
+        image: alpine:3.13.1
+        name: alpine
+        resources: {}
+status: {}

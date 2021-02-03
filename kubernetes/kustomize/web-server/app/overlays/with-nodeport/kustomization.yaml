@@ -5,15 +5,7 @@ resources:
   - ../../base/deployment.yaml
   - ../../base/service-nodeport.yaml
 
-images:
-  - name: nginx
-    newTag: latest
-
-commonAnnotations:
-  creator: Marek Dudek
+nameSuffix: -np
 
 commonLabels:
   variant: with-nodeport-service
-  owner: mdudek
-
-nameSuffix: -np
