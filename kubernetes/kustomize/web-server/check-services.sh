@@ -7,21 +7,17 @@ set -euxo pipefail
 
 function check_service() {
 
-  set +x
-
   SERVICE_NAME=$1
   SERVICE_PORT=$2
-
   LOCAL_PORT=18080
 
   kubectl port-forward service/"$SERVICE_NAME" $LOCAL_PORT:"$SERVICE_PORT" &
   PID=$!
+
   sleep 1
-
   wget --spider --quiet localhost:$LOCAL_PORT
-  kill $PID
 
-  set -x
+  kill $PID
 }
 
 check_service web-server-cip 7071
