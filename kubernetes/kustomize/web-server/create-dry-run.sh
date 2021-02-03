@@ -18,7 +18,6 @@ kubectl create service clusterip $NAME \
   -o yaml --dry-run=client > "$BASE"/service-clusterip.yaml
 
 kubectl create service nodeport $NAME \
-  --node-port=30000 \
   --tcp=7072:80 \
   -o yaml --dry-run=client > "$BASE"/service-nodeport.yaml
 
