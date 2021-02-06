@@ -13,28 +13,21 @@ kubectl create deployment $NAME \
   --port=80 \
   -o yaml --dry-run=client > "$BASE"/multi-main.yaml
 
+COMMAND=$(cat "$DIR/writer-command.sh")
+
 kubectl create deployment $NAME \
   --image=bash \
   -o yaml --dry-run=client > "$BASE"/multi-writer.yaml \
-  -- /usr/local/bin/bash -c "
-while true;
-do
-  echo I write
-  sleep 1
-done
-"
+  -- /usr/local/bin/bash -c "$COMMAND"
 
 sed -i 's/name: bash/name: writer/' "$BASE"/multi-writer.yaml
+
+
+COMMAND=$(cat "$DIR/reader-command.sh")
 
 kubectl create deployment $NAME \
   --image=bash \
   -o yaml --dry-run=client > "$BASE"/multi-reader.yaml \
-  -- /usr/local/bin/bash -c "
-while true;
-do
-  echo I read
-  sleep 1
-done
-"
+  -- /usr/local/bin/bash -c "$COMMAND"
 
 sed -i 's/name: bash/name: reader/' "$BASE"/multi-reader.yaml

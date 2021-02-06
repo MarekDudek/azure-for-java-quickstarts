@@ -21,12 +21,19 @@ spec:
       - command:
         - /usr/local/bin/bash
         - -c
-        - |2
+        - |-
+          IFS=$'\n\t'
+          set -euxo pipefail
+
+          mkdir /mnt/files
+
+          COUNTER=0
 
           while true;
           do
-            echo I write
+            touch /mnt/files/file-$COUNTER.txt
             sleep 1
+            (( COUNTER++ )) || true
           done
         image: bash
         name: writer

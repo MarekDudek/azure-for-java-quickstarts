@@ -21,7 +21,9 @@ spec:
       - command:
         - /usr/local/bin/bash
         - -c
-        - |2
+        - |-
+          IFS=$'\n\t'
+          set -euxo pipefail
 
           while true;
           do
