@@ -29,6 +29,6 @@ spec:
             sleep 1
           done
         image: bash
-        name: bash-reader
+        name: reader
         resources: {}
 status: {}

@@ -34,7 +34,7 @@ kubectl create deployment $NAME \
   -o yaml --dry-run=client > "$BASE"/multi-main.yaml
 
 
-kubectl create deployment $NAME-writer \
+kubectl create deployment $NAME \
   --image=bash \
   -o yaml --dry-run=client > "$BASE"/multi-writer.yaml \
   -- /usr/local/bin/bash -c "
@@ -45,7 +45,10 @@ do
 done
 "
 
-kubectl create deployment $NAME-reader \
+sed -i 's/name: bash/name: writer/' "$BASE"/multi-writer.yaml
+
+
+kubectl create deployment $NAME \
   --image=bash \
   -o yaml --dry-run=client > "$BASE"/multi-reader.yaml \
   -- /usr/local/bin/bash -c "
@@ -55,3 +58,5 @@ do
   sleep 1
 done
 "
+
+sed -i 's/name: bash/name: reader/' "$BASE"/multi-reader.yaml
