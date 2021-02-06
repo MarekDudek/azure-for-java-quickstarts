@@ -10,3 +10,4 @@ SNAPSHOT="$DIR"/versions/v-004
 kubectl delete -f "${SNAPSHOT}"/with-clusterip/__kustomized.yaml
 kubectl delete -f "${SNAPSHOT}"/with-nodeport/__kustomized.yaml
 kubectl delete -f "${SNAPSHOT}"/with-loadbalancer/__kustomized.yaml
+kubectl delete -f "${SNAPSHOT}"/multi/__kustomized.yaml
