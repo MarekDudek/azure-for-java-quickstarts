@@ -64,6 +64,16 @@ split "$WITH_LOADBALANCER_BUILD" __kustomized.yaml \
   deployment.yaml \
   service-loadbalancer.yaml
 
-SNAPSHOT="$DIR"/versions/v-004
+MULTI="$DIR"/build/multi
+mkdir -p "$MULTI"
+kustomize build \
+  --load_restrictor=none \
+  --reorder=none \
+  --output "$MULTI"/__kustomized.yaml \
+  "$DIR"/app/overlays/multi
+split "$MULTI" __kustomized.yaml \
+  deployment.yaml
+
+SNAPSHOT="$DIR"/versions/v-005
 rm -rf "$SNAPSHOT" ; mkdir -p "$SNAPSHOT"
 cp -r "$DIR"/build/* "$SNAPSHOT"

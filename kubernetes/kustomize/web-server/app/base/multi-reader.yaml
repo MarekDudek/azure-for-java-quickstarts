@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: multi
+  name: multi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: multi
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: multi
+    spec:
+      containers:
+      - command:
+        - /usr/local/bin/bash
+        - -c
+        - |2
+
+          while true;
+          do
+            echo I read
+            sleep 1
+          done
+        image: bash
+        name: bash-reader
+        resources: {}
+status: {}
