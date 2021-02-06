@@ -1,16 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-
   name: multi
 spec:
-  selector:
-    matchLabels:
-      app: multi
   template:
-    metadata:
-      labels:
-        app: multi
     spec:
       volumes:
         - name: shared-data
