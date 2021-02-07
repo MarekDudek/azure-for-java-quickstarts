@@ -7,7 +7,7 @@ set -euxo pipefail
 source "$DIR"/../../../splitting.sh
 
 APP="$DIR"/../..
-BUILD="$APP"/build/minikube-simplest
+BUILD="$APP"/build/disposable-database
 
 rm -fr "$BUILD" ; mkdir -p "$BUILD"
 
@@ -15,7 +15,7 @@ kustomize build \
   --load_restrictor=none \
   --reorder=none \
   --output "$BUILD"/__kustomized.yaml \
-  "$APP"/app/overlays/minikube-simplest
+  "$APP"/app/overlays/disposable-database
 
 split "$BUILD" __kustomized.yaml \
   postgres-on-k8s-deployment.yaml \

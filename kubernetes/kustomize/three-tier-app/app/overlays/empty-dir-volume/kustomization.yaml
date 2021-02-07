@@ -5,5 +5,8 @@ resources:
   - ../../base/postgres-on-k8s-deployment.yaml
   - ../../base/postgres-on-k8s-service-clusterip.yaml
 
+commonLabels:
+  variant: empty-dir-volume
+
 patchesStrategicMerge:
   - deployment-patch.yaml

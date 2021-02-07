@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: postgres-on-k8s
+    variant: disposable-database
+  name: postgres-on-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-on-k8s
+      variant: disposable-database
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: postgres-on-k8s
+        variant: disposable-database
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        image: postgres:latest
+        name: postgres
+        ports:
+        - containerPort: 5432
+        resources: {}
+status: {}

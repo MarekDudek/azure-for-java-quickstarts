@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: postgres-on-k8s
+    variant: empty-dir-volume
+  name: postgres-on-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-on-k8s
+      variant: empty-dir-volume
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: postgres-on-k8s
+        variant: empty-dir-volume
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_PASSWORD
+          value: minikube
+        image: postgres:latest
+        name: postgres
+        ports:
+        - containerPort: 5432
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgres-data
+      volumes:
+      - emptyDir: {}
+        name: postgres-data
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: postgres-on-k8s
+    variant: empty-dir-volume
+  name: postgres-on-k8s
+spec:
+  ports:
+  - name: "5432"
+    port: 5432
+    protocol: TCP
+    targetPort: 5432
+  selector:
+    app: postgres-on-k8s
+    variant: empty-dir-volume
+  type: ClusterIP
+status:
+  loadBalancer: {}
