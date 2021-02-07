@@ -11,4 +11,4 @@ kubectl create configmap config-map-db \
   --from-literal POSTGRES_DB=default-db \
   --from-literal POSTGRES_USER=db-admin \
   --from-literal POSTGRES_PASSWORD="#xkFB^G],WL2UaU6" \
-  -o yaml --dry-run=client > "$BASE"/config-map-db.yaml
+  -o yaml --dry-run=client > "$BASE"/config-map-postgres.yaml
