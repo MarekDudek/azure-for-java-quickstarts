@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: postgres-on-k8s
+  name: postgres-on-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-on-k8s
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: postgres-on-k8s
+    spec:
+      containers:
+      - image: postgres:stable
+        name: postgres
+        ports:
+        - containerPort: 5432
+        resources: {}
+      volumes:
+      - emptyDir: {}
+        name: postgres-data
+status: {}
