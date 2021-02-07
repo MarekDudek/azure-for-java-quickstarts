@@ -6,5 +6,5 @@ spec:
   template:
     spec:
       volumes:
-        - name: shared-data
+        - name: files
           emptyDir: {}

@@ -31,6 +31,9 @@ spec:
         image: bash
         name: reader
         resources: {}
+        volumeMounts:
+        - mountPath: /mnt/files-out
+          name: files
       - command:
         - /usr/local/bin/bash
         - -c
@@ -51,6 +54,9 @@ spec:
         image: bash
         name: writer
         resources: {}
+        volumeMounts:
+        - mountPath: /mnt/files-in
+          name: files
       - image: nginx:stable
         name: nginx
         ports:
@@ -58,5 +64,5 @@ spec:
         resources: {}
       volumes:
       - emptyDir: {}
-        name: shared-data
+        name: files
 status: {}

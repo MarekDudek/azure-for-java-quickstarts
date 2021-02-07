@@ -8,3 +8,4 @@ patchesStrategicMerge:
   - ../../base/multi-writer.yaml
   - ../../base/multi-reader.yaml
   - volume.yaml
+  - volume-mounts.yaml
