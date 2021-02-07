@@ -13,3 +13,7 @@ kubectl create deployment $NAME \
   --image=postgres:latest \
   --port=5432 \
   -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-deployment.yaml
+
+kubectl create service clusterip $NAME \
+  --tcp=5432 \
+  -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-service-clusterip.yaml

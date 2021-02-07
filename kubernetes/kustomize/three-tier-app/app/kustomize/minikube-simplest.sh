@@ -18,7 +18,8 @@ kustomize build \
   "$APP"/app/overlays/minikube-simplest
 
 split "$BUILD" __kustomized.yaml \
-  postgres-on-k8s-deployment.yaml
+  postgres-on-k8s-deployment.yaml \
+  postgres-on-k8s-service-clusterip.yaml \
 
 SNAPSHOT="$APP"/versions/v-001
 rm -rf "$SNAPSHOT" ; mkdir -p "$SNAPSHOT"

@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base/postgres-on-k8s-deployment.yaml
+  - ../../base/postgres-on-k8s-service-clusterip.yaml
 
 patchesStrategicMerge:
-  - patch.yaml
+  - deployment-patch.yaml
