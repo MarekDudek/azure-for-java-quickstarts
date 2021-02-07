@@ -10,3 +10,5 @@ commonLabels:
 
 patchesStrategicMerge:
   - deployment-patch.yaml
+
+nameSuffix: -dd

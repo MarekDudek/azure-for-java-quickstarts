@@ -4,7 +4,7 @@ metadata:
   labels:
     app: postgres-on-k8s
     variant: empty-dir-volume
-  name: postgres-on-k8s
+  name: postgres-on-k8s-ed
 spec:
   replicas: 1
   selector:

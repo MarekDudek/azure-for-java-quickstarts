@@ -4,7 +4,7 @@ metadata:
   labels:
     app: postgres-on-k8s
     variant: disposable-database
-  name: postgres-on-k8s
+  name: postgres-on-k8s-dd
 spec:
   replicas: 1
   selector:
@@ -36,7 +36,7 @@ metadata:
   labels:
     app: postgres-on-k8s
     variant: disposable-database
-  name: postgres-on-k8s
+  name: postgres-on-k8s-dd
 spec:
   ports:
   - name: "5432"
