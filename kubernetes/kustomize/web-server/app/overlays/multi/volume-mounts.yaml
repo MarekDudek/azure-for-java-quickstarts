@@ -8,9 +8,9 @@ spec:
       containers:
         - name: reader
           volumeMounts:
-            - mountPath: /mnt/files-out
+            - mountPath: /mnt/files-in
               name: files
         - name: writer
           volumeMounts:
-            - mountPath: /mnt/files-in
+            - mountPath: /mnt/files-out
               name: files

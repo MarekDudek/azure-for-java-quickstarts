@@ -3,6 +3,8 @@ set -euxo pipefail
 
 while true;
 do
-  echo I read
+  for FILE in /mnt/files-in/file-*.txt ; do
+    rm -f "$FILE"
+  done
   sleep 1
 done

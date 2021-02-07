@@ -25,14 +25,16 @@ spec:
 
           while true;
           do
-            echo I read
+            for FILE in /mnt/files-in/file-*.txt ; do
+              rm -f "$FILE"
+            done
             sleep 1
           done
         image: bash
         name: reader
         resources: {}
         volumeMounts:
-        - mountPath: /mnt/files-out
+        - mountPath: /mnt/files-in
           name: files
       - command:
         - /usr/local/bin/bash
@@ -41,21 +43,19 @@ spec:
           IFS=$'\n\t'
           set -euxo pipefail
 
-          mkdir /mnt/files
-
           COUNTER=0
 
           while true;
           do
-            touch /mnt/files/file-$COUNTER.txt
-            sleep 1
+            touch /mnt/files-out/file-$COUNTER.txt
+            sleep .1
             (( COUNTER++ )) || true
           done
         image: bash
         name: writer
         resources: {}
         volumeMounts:
-        - mountPath: /mnt/files-in
+        - mountPath: /mnt/files-out
           name: files
       - image: nginx:stable
         name: nginx
