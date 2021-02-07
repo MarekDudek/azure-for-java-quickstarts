@@ -10,6 +10,6 @@ BASE="$DIR"/../base
 NAME=postgres-on-k8s
 
 kubectl create deployment $NAME \
-  --image=postgres:stable \
+  --image=postgres:latest \
   --port=5432 \
   -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-deployment.yaml

@@ -5,4 +5,4 @@ resources:
   - ../../base/postgres-on-k8s-deployment.yaml
 
 patchesStrategicMerge:
-  - postgres-on-k8s-volume-empty-dir.yaml
+  - patch.yaml
