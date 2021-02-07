@@ -7,7 +7,7 @@ set -euxo pipefail
 
 BASE="$DIR"/../base
 
-kubectl create configmap config-map-db \
+kubectl create configmap config-map-postgres \
   --from-literal POSTGRES_DB=default-db \
   --from-literal POSTGRES_USER=db-admin \
   --from-literal POSTGRES_PASSWORD="#xkFB^G],WL2UaU6" \
