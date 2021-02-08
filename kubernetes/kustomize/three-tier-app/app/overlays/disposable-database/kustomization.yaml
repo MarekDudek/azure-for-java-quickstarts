@@ -12,5 +12,7 @@ commonLabels:
 
 patchesStrategicMerge:
   - deployment-patch.yaml
+  - job-to-set-up-db-patch.yaml
+  - job-to-tear-down-db-patch.yaml
 
 nameSuffix: -dd
