@@ -18,9 +18,16 @@ kubectl create service clusterip $NAME \
   --tcp=5432 \
   -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-service-clusterip.yaml
 
-COMMAND=$(cat "$DIR/set-up-db.sh")
+SET_UP_DB=$(cat "$DIR/set-up-db.sh")
 
 kubectl create job $NAME-job-to-set-up-db \
   --image=postgres:latest \
   -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-job-to-set-up-db.yaml \
-  -- /bin/sh -c "$COMMAND"
+  -- /bin/sh -c "$SET_UP_DB"
+
+TEAR_DOWN_DB=$(cat "$DIR/tear-down-db.sh")
+
+kubectl create job $NAME-job-to-tear-down-db \
+  --image=postgres:latest \
+  -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-job-to-tear-down-db.yaml \
+  -- /bin/sh -c "$TEAR_DOWN_DB"

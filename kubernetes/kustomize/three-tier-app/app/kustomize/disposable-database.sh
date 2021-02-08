@@ -20,7 +20,8 @@ kustomize build \
 split "$BUILD" __kustomized.yaml \
   postgres-on-k8s-deployment.yaml \
   postgres-on-k8s-service-clusterip.yaml \
-  postgres-on-k8s-job-to-set-up-db.yaml
+  postgres-on-k8s-job-to-set-up-db.yaml \
+  postgres-on-k8s-job-to-tear-down-db.yaml
 
 SNAPSHOT="$APP"/versions/v-001
 rm -rf "$SNAPSHOT" ; mkdir -p "$SNAPSHOT"

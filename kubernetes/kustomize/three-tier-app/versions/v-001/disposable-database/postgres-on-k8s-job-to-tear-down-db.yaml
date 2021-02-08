@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  labels:
+    variant: disposable-database
+  name: postgres-on-k8s-job-to-tear-down-db-dd
+spec:
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        variant: disposable-database
+    spec:
+      containers:
+      - command:
+        - /bin/sh
+        - -c
+        - |-
+          PGPASSWORD=postgres dropdb   --echo -U postgres -h postgres-on-k8s-dd my_db
+          PGPASSWORD=postgres dropuser --echo -U postgres -h postgres-on-k8s-dd db_user
+        image: postgres:latest
+        name: postgres-on-k8s-job-to-tear-down-db
+        resources: {}
+      restartPolicy: Never
+status: {}
