@@ -49,3 +49,31 @@ spec:
   type: ClusterIP
 status:
   loadBalancer: {}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  labels:
+    variant: disposable-database
+  name: postgres-on-k8s-job-to-set-up-db-dd
+spec:
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        variant: disposable-database
+    spec:
+      containers:
+      - command:
+        - /bin/sh
+        - -c
+        - |2-
+
+
+          echo I worked
+        image: postgres:latest
+        name: postgres-on-k8s-job-to-set-up-db
+        resources: {}
+      restartPolicy: Never
+status: {}

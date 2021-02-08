@@ -17,3 +17,10 @@ kubectl create deployment $NAME \
 kubectl create service clusterip $NAME \
   --tcp=5432 \
   -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-service-clusterip.yaml
+
+COMMAND=$(cat "$DIR/set-up-db.sh")
+
+kubectl create job $NAME-job-to-set-up-db \
+  --image=postgres:latest \
+  -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-job-to-set-up-db.yaml \
+  -- /bin/sh -c "$COMMAND"
