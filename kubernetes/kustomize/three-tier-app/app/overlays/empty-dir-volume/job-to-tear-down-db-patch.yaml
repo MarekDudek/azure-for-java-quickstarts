@@ -1,16 +1,16 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: postgres-on-k8s-job-to-set-up-db
+  name: postgres-on-k8s-job-to-tear-down-db
 spec:
   template:
     spec:
       containers:
-        - name: postgres-on-k8s-job-to-set-up-db
+        - name: postgres-on-k8s-job-to-tear-down-db
           env:
           - name: DB_SERVICE_URL
-            value: postgres-on-k8s-dd
+            value: postgres-on-k8s-ed
           - name: DB_SERVICE_PORT
             value: "5432"
           - name: PASSWORD
-            value: postgres
+            value: minikube

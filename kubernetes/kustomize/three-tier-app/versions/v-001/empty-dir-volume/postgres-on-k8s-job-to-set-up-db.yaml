@@ -1,12 +1,14 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  creationTimestamp: null
-  name: postgres-on-k8s-job-to-set-up-db
+  labels:
+    variant: empty-dir-volume
+  name: postgres-on-k8s-job-to-set-up-db-ed
 spec:
   template:
     metadata:
-      creationTimestamp: null
+      labels:
+        variant: empty-dir-volume
     spec:
       containers:
       - command:
@@ -16,6 +18,13 @@ spec:
           PGPASSWORD="$PASSWORD" createuser --echo -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" db_user
           PGPASSWORD="$PASSWORD" psql              -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" -c "ALTER USER \"db_user\" WITH PASSWORD 'db_user'"
           PGPASSWORD="$PASSWORD" createdb   --echo -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" --owner=db_user my_db
+        env:
+        - name: DB_SERVICE_URL
+          value: postgres-on-k8s-ed
+        - name: DB_SERVICE_PORT
+          value: "5432"
+        - name: PASSWORD
+          value: minikube
         image: postgres:latest
         name: postgres-on-k8s-job-to-set-up-db
         resources: {}

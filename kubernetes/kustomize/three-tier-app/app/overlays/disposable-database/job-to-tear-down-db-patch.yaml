@@ -12,3 +12,5 @@ spec:
             value: postgres-on-k8s-dd
           - name: DB_SERVICE_PORT
             value: "5432"
+          - name: PASSWORD
+            value: postgres

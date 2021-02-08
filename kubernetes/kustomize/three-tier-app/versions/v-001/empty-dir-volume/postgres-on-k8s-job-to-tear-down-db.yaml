@@ -2,13 +2,13 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   labels:
-    variant: disposable-database
-  name: postgres-on-k8s-job-to-tear-down-db-dd
+    variant: empty-dir-volume
+  name: postgres-on-k8s-job-to-tear-down-db-ed
 spec:
   template:
     metadata:
       labels:
-        variant: disposable-database
+        variant: empty-dir-volume
     spec:
       containers:
       - command:
@@ -19,11 +19,11 @@ spec:
           PGPASSWORD="$PASSWORD" dropuser --echo -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" db_user
         env:
         - name: DB_SERVICE_URL
-          value: postgres-on-k8s-dd
+          value: postgres-on-k8s-ed
         - name: DB_SERVICE_PORT
           value: "5432"
         - name: PASSWORD
-          value: postgres
+          value: minikube
         image: postgres:latest
         name: postgres-on-k8s-job-to-tear-down-db
         resources: {}

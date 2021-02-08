@@ -15,14 +15,16 @@ spec:
         - /bin/sh
         - -c
         - |-
-          PGPASSWORD=postgres createuser --echo -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" db_user
-          PGPASSWORD=postgres psql              -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" -c "ALTER USER \"db_user\" WITH PASSWORD 'db_user'"
-          PGPASSWORD=postgres createdb   --echo -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" --owner=db_user my_db
+          PGPASSWORD="$PASSWORD" createuser --echo -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" db_user
+          PGPASSWORD="$PASSWORD" psql              -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" -c "ALTER USER \"db_user\" WITH PASSWORD 'db_user'"
+          PGPASSWORD="$PASSWORD" createdb   --echo -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" --owner=db_user my_db
         env:
         - name: DB_SERVICE_URL
           value: postgres-on-k8s-dd
         - name: DB_SERVICE_PORT
           value: "5432"
+        - name: PASSWORD
+          value: postgres
         image: postgres:latest
         name: postgres-on-k8s-job-to-set-up-db
         resources: {}
