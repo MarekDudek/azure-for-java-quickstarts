@@ -31,3 +31,11 @@ kubectl create job $NAME-job-to-tear-down-db \
   --image=postgres:latest \
   -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-job-to-tear-down-db.yaml \
   -- /bin/sh -c "$TEAR_DOWN_DB"
+
+INSERT_DB=$(cat "$DIR/insert-db.sh")
+
+kubectl create cronjob $NAME-cronjob-insert-db \
+  --image=postgres:latest \
+  --schedule '* * * * *' \
+  -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-cronjob-insert-db.yaml \
+  -- /bin/sh -c "$INSERT_DB"

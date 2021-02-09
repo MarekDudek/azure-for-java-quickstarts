@@ -1,0 +1,39 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  labels:
+    variant: empty-dir-volume
+  name: postgres-on-k8s-cronjob-insert-db-ed
+spec:
+  jobTemplate:
+    metadata:
+      labels:
+        variant: empty-dir-volume
+      name: postgres-on-k8s-cronjob-insert-db
+    spec:
+      template:
+        metadata:
+          labels:
+            variant: empty-dir-volume
+        spec:
+          containers:
+          - command:
+            - /bin/sh
+            - -c
+            - |-
+              PGPASSWORD=db_user  psql -U db_user -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" -d my_db -c "
+                INSERT INTO some_table (description) VALUES ('some description')
+              "
+            env:
+            - name: DB_SERVICE_URL
+              value: postgres-on-k8s-ed
+            - name: DB_SERVICE_PORT
+              value: "5432"
+            - name: PASSWORD
+              value: minikube
+            image: postgres:latest
+            name: postgres-on-k8s-cronjob-insert-db
+            resources: {}
+          restartPolicy: OnFailure
+  schedule: '* * * * *'
+status: {}
