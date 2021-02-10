@@ -6,6 +6,7 @@ resources:
   - ../../base/postgres-on-k8s-service-clusterip.yaml
   - ../../base/postgres-on-k8s-job-to-set-up-db.yaml
   - ../../base/postgres-on-k8s-job-to-tear-down-db.yaml
+  - ../../base/postgres-on-k8s-cronjob-insert-db.yaml
 
 commonLabels:
   variant: disposable-database
@@ -14,5 +15,6 @@ patchesStrategicMerge:
   - deployment-patch.yaml
   - job-to-set-up-db-patch.yaml
   - job-to-tear-down-db-patch.yaml
+  - cronjob-insert-db.yaml
 
 nameSuffix: -dd

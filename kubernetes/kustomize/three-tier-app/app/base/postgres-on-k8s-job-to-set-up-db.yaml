@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - command:
-        - /bin/sh
+        - /bin/bash
         - -c
         - |-
           PGPASSWORD="$PASSWORD" createuser --echo -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" db_user

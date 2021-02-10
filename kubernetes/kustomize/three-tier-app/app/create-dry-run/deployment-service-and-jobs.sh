@@ -23,14 +23,14 @@ SET_UP_DB=$(cat "$DIR/set-up-db.sh")
 kubectl create job $NAME-job-to-set-up-db \
   --image=postgres:latest \
   -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-job-to-set-up-db.yaml \
-  -- /bin/sh -c "$SET_UP_DB"
+  -- /bin/bash -c "$SET_UP_DB"
 
 TEAR_DOWN_DB=$(cat "$DIR/tear-down-db.sh")
 
 kubectl create job $NAME-job-to-tear-down-db \
   --image=postgres:latest \
   -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-job-to-tear-down-db.yaml \
-  -- /bin/sh -c "$TEAR_DOWN_DB"
+  -- /bin/bash -c "$TEAR_DOWN_DB"
 
 INSERT_DB=$(cat "$DIR/insert-db.sh")
 
@@ -38,4 +38,4 @@ kubectl create cronjob $NAME-cronjob-insert-db \
   --image=postgres:latest \
   --schedule '* * * * *' \
   -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-cronjob-insert-db.yaml \
-  -- /bin/sh -c "$INSERT_DB"
+  -- /bin/bash -c "$INSERT_DB"

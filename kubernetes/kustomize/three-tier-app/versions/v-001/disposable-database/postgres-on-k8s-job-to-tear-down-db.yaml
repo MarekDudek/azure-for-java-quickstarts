@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - command:
-        - /bin/sh
+        - /bin/bash
         - -c
         - |-
           PGPASSWORD="$PASSWORD" dropdb   --echo -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" my_db

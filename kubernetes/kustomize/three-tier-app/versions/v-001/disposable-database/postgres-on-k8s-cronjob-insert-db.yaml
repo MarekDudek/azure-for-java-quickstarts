@@ -1,17 +1,20 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  creationTimestamp: null
-  name: postgres-on-k8s-cronjob-insert-db
+  labels:
+    variant: disposable-database
+  name: postgres-on-k8s-cronjob-insert-db-dd
 spec:
   jobTemplate:
     metadata:
-      creationTimestamp: null
+      labels:
+        variant: disposable-database
       name: postgres-on-k8s-cronjob-insert-db
     spec:
       template:
         metadata:
-          creationTimestamp: null
+          labels:
+            variant: disposable-database
         spec:
           containers:
           - command:
@@ -25,6 +28,13 @@ spec:
                 "
                 sleep 1
               done
+            env:
+            - name: DB_SERVICE_URL
+              value: postgres-on-k8s-dd
+            - name: DB_SERVICE_PORT
+              value: "5432"
+            - name: PASSWORD
+              value: minikube
             image: postgres:latest
             name: postgres-on-k8s-cronjob-insert-db
             resources: {}

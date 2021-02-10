@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
       - command:
-        - /bin/sh
+        - /bin/bash
         - -c
         - |-
           PGPASSWORD="$PASSWORD" createuser --echo -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" db_user
@@ -105,7 +105,7 @@ spec:
     spec:
       containers:
       - command:
-        - /bin/sh
+        - /bin/bash
         - -c
         - |-
           PGPASSWORD="$PASSWORD" dropdb   --echo -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" my_db
@@ -121,4 +121,48 @@ spec:
         name: postgres-on-k8s-job-to-tear-down-db
         resources: {}
       restartPolicy: Never
+status: {}
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  labels:
+    variant: disposable-database
+  name: postgres-on-k8s-cronjob-insert-db-dd
+spec:
+  jobTemplate:
+    metadata:
+      labels:
+        variant: disposable-database
+      name: postgres-on-k8s-cronjob-insert-db
+    spec:
+      template:
+        metadata:
+          labels:
+            variant: disposable-database
+        spec:
+          containers:
+          - command:
+            - /bin/bash
+            - -c
+            - |-
+              for _ in {1..60}
+              do
+                PGPASSWORD=db_user  psql -U db_user -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" -d my_db -c "
+                  INSERT INTO some_table (description) VALUES (md5(random()::text))
+                "
+                sleep 1
+              done
+            env:
+            - name: DB_SERVICE_URL
+              value: postgres-on-k8s-dd
+            - name: DB_SERVICE_PORT
+              value: "5432"
+            - name: PASSWORD
+              value: minikube
+            image: postgres:latest
+            name: postgres-on-k8s-cronjob-insert-db
+            resources: {}
+          restartPolicy: OnFailure
+  schedule: '* * * * *'
 status: {}
