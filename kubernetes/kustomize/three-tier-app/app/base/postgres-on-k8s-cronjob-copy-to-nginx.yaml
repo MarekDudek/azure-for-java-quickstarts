@@ -26,7 +26,7 @@ spec:
                 --html \
                 -c "SELECT * FROM some_table"
 
-              sleep 60
+              cp index.html /usr/share/nginx/html
             image: postgres:latest
             name: postgres-on-k8s-cronjob-copy-to-nginx
             resources: {}

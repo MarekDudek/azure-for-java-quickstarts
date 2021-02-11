@@ -29,7 +29,7 @@ spec:
                 --html \
                 -c "SELECT * FROM some_table"
 
-              sleep 60
+              cp index.html /usr/share/nginx/html
             env:
             - name: DB_SERVICE_URL
               value: postgres-on-k8s-dd

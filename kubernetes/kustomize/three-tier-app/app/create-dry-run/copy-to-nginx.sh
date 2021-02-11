@@ -6,4 +6,4 @@ PGPASSWORD=db_user  psql -U db_user -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT
   --html \
   -c "SELECT * FROM some_table"
 
-sleep 60
+cp index.html /usr/share/nginx/html
