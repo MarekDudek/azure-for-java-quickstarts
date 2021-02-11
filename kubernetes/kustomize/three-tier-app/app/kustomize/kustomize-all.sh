@@ -12,3 +12,4 @@ rm -fr "$BUILD"
 
 "$DIR"/empty-dir-volume.sh
 "$DIR"/disposable-database.sh
+"$DIR"/nginx.sh

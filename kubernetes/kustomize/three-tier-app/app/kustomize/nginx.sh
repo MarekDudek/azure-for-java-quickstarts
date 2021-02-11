@@ -7,7 +7,7 @@ set -euxo pipefail
 source "$DIR"/../../../splitting.sh
 
 APP="$DIR"/../..
-BUILD="$APP"/build/disposable-database
+BUILD="$APP"/build/nginx
 
 rm -fr "$BUILD" ; mkdir -p "$BUILD"
 
@@ -15,15 +15,11 @@ kustomize build \
   --load_restrictor=none \
   --reorder=none \
   --output "$BUILD"/__kustomized.yaml \
-  "$APP"/app/overlays/disposable-database
+  "$APP"/app/overlays/nginx
 
 split "$BUILD" __kustomized.yaml \
-  postgres-on-k8s-deployment.yaml \
-  postgres-on-k8s-service-clusterip.yaml \
-  postgres-on-k8s-job-to-set-up-db.yaml \
-  postgres-on-k8s-job-to-tear-down-db.yaml \
-  postgres-on-k8s-cronjob-insert-db.yaml \
-  postgres-on-k8s-cronjob-copy-to-nginx.yaml
+  nginx-on-k8s-deployment.yaml \
+  nginx-on-k8s-service-clusterip.yaml
 
 SNAPSHOT="$APP"/versions/v-001
 rm -rf "$SNAPSHOT" ; mkdir -p "$SNAPSHOT"

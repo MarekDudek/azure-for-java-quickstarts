@@ -39,3 +39,11 @@ kubectl create cronjob $NAME-cronjob-insert-db \
   --schedule '* * * * *' \
   -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-cronjob-insert-db.yaml \
   -- /bin/bash -c "$INSERT_DB"
+
+COPY_TO_NGINX=$(cat "$DIR/copy-to-nginx.sh")
+
+kubectl create cronjob $NAME-cronjob-copy-to-nginx \
+  --image=postgres:latest \
+  --schedule '* * * * *' \
+  -o yaml --dry-run=client > "$BASE"/postgres-on-k8s-cronjob-copy-to-nginx.yaml \
+  -- /bin/bash -c "$COPY_TO_NGINX"
