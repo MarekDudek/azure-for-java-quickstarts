@@ -22,7 +22,8 @@ split "$BUILD" __kustomized.yaml \
   postgres-on-k8s-service-clusterip.yaml \
   postgres-on-k8s-job-to-set-up-db.yaml \
   postgres-on-k8s-job-to-tear-down-db.yaml \
-  postgres-on-k8s-cronjob-insert-db.yaml
+  postgres-on-k8s-cronjob-insert-db.yaml \
+  postgres-on-k8s-cronjob-copy-to-nginx.yaml
 
 SNAPSHOT="$APP"/versions/v-001
 rm -rf "$SNAPSHOT" ; mkdir -p "$SNAPSHOT"

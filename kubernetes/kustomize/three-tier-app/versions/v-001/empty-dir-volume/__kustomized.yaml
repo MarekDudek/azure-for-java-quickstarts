@@ -181,3 +181,56 @@ spec:
           restartPolicy: OnFailure
   schedule: '* * * * *'
 status: {}
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  labels:
+    variant: empty-dir-volume
+  name: postgres-on-k8s-cronjob-copy-to-nginx-ed
+spec:
+  jobTemplate:
+    metadata:
+      labels:
+        variant: empty-dir-volume
+      name: postgres-on-k8s-cronjob-copy-to-nginx
+    spec:
+      template:
+        metadata:
+          labels:
+            variant: empty-dir-volume
+        spec:
+          containers:
+          - command:
+            - /bin/bash
+            - -c
+            - |-
+              IFS=$'\n\t'
+              set -euxo pipefail
+
+              PGPASSWORD=db_user  psql -U db_user -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" -d my_db \
+                --output index.html \
+                --html \
+                -c "SELECT * FROM some_table"
+
+              cp index.html /usr/share/nginx/html
+            env:
+            - name: DB_SERVICE_URL
+              value: postgres-on-k8s-ed
+            - name: DB_SERVICE_PORT
+              value: "5432"
+            - name: PASSWORD
+              value: minikube
+            image: postgres:latest
+            name: postgres-on-k8s-cronjob-copy-to-nginx
+            resources: {}
+            volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: html-files
+          restartPolicy: OnFailure
+          volumes:
+          - name: html-files
+            persistentVolumeClaim:
+              claimName: shared-data-persistent-volume-claim
+  schedule: '* * * * *'
+status: {}
