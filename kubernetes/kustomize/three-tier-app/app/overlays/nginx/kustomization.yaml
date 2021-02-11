@@ -5,3 +5,5 @@ resources:
   - ../../base/nginx-on-k8s-deployment.yaml
   - ../../base/nginx-on-k8s-service-clusterip.yaml
 
+patchesStrategicMerge:
+- shared-data.yaml

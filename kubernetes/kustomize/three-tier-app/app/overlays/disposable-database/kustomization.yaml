@@ -7,7 +7,7 @@ resources:
   - ../../base/postgres-on-k8s-job-to-set-up-db.yaml
   - ../../base/postgres-on-k8s-job-to-tear-down-db.yaml
   - ../../base/postgres-on-k8s-cronjob-insert-db.yaml
-  - ../../base/postgres-on-k8s-cronjob-copy-to-nginx-edited.yaml
+  - ../../base/postgres-on-k8s-cronjob-copy-to-nginx.yaml
 
 commonLabels:
   variant: disposable-database

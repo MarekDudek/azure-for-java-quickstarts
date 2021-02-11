@@ -18,3 +18,10 @@ spec:
                   value: "5432"
                 - name: PASSWORD
                   value: minikube
+              volumeMounts:
+                - mountPath: /usr/share/nginx/html
+                  name: html-files
+          volumes:
+            - name: html-files
+              persistentVolumeClaim:
+                claimName: shared-data-persistent-volume-claim
