@@ -1,5 +1,14 @@
 IFS=$'\n\t'
 set -euxo pipefail
 
-PGPASSWORD="$PASSWORD" dropdb   --echo -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" my_db
-PGPASSWORD="$PASSWORD" dropuser --echo -U postgres -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" db_user
+PGPASSWORD="$POSTGRES_PASSWORD" dropdb --echo \
+  --username="$POSTGRES_USER" \
+  --host="$DB_SERVICE_URL" \
+  --port="$DB_SERVICE_PORT" \
+  my_db
+
+PGPASSWORD="$POSTGRES_PASSWORD" dropuser --echo \
+  --username="$POSTGRES_USER" \
+  --host="$DB_SERVICE_URL" \
+  --port="$DB_SERVICE_PORT" \
+  db_user

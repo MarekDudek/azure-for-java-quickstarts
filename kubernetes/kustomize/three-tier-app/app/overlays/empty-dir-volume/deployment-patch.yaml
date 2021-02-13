@@ -14,5 +14,13 @@ spec:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
           env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: pg-db-admin-credentials-alt
             - name: POSTGRES_PASSWORD
-              value: minikube
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: pg-db-admin-credentials-alt

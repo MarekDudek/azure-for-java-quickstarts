@@ -12,5 +12,13 @@ spec:
             value: postgres-on-k8s-dd
           - name: DB_SERVICE_PORT
             value: "5432"
-          - name: PASSWORD
-            value: postgres
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                key: username
+                name: pg-db-admin-credentials
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: pg-db-admin-credentials

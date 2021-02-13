@@ -8,5 +8,13 @@ spec:
       containers:
         - name: postgres
           env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: pg-db-admin-credentials
             - name: POSTGRES_PASSWORD
-              value: postgres
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: pg-db-admin-credentials
