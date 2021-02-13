@@ -16,7 +16,7 @@ patchesStrategicMerge:
   - deployment-patch.yaml
   - job-to-set-up-db-patch.yaml
   - job-to-tear-down-db-patch.yaml
-  - cronjob-insert-db.yaml
-  - cronjob-copy-to-nginx.yaml
+  - cronjob-insert-db-patch.yaml
+  - cronjob-copy-to-nginx-patch.yaml
 
 nameSuffix: -dd

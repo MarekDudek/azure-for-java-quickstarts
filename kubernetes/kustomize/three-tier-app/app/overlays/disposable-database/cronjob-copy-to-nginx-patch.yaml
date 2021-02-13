@@ -16,8 +16,16 @@ spec:
                   value: postgres-on-k8s-dd
                 - name: DB_SERVICE_PORT
                   value: "5432"
-                - name: PASSWORD
-                  value: minikube
+                - name: CLIENT_USER
+                  valueFrom:
+                    secretKeyRef:
+                      key: username
+                      name: pg-db-client-credentials
+                - name: CLIENT_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      key: password
+                      name: pg-db-client-credentials
               volumeMounts:
                 - mountPath: /usr/share/nginx/html
                   name: html-files

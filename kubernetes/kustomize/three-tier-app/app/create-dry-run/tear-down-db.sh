@@ -11,4 +11,4 @@ PGPASSWORD="$POSTGRES_PASSWORD" dropuser --echo \
   --username="$POSTGRES_USER" \
   --host="$DB_SERVICE_URL" \
   --port="$DB_SERVICE_PORT" \
-  db_user
+  "$CLIENT_USER"

@@ -22,3 +22,13 @@ spec:
               secretKeyRef:
                 key: password
                 name: pg-db-admin-credentials
+          - name: CLIENT_USER
+            valueFrom:
+              secretKeyRef:
+                key: username
+                name: pg-db-client-credentials
+          - name: CLIENT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: pg-db-client-credentials

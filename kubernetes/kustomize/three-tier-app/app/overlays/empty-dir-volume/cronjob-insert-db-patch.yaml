@@ -16,5 +16,13 @@ spec:
                   value: postgres-on-k8s-ed
                 - name: DB_SERVICE_PORT
                   value: "5432"
-                - name: PASSWORD
-                  value: minikube
+                - name: CLIENT_USER
+                  valueFrom:
+                    secretKeyRef:
+                      key: username
+                      name: pg-db-client-credentials-alt
+                - name: CLIENT_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      key: password
+                      name: pg-db-client-credentials-alt

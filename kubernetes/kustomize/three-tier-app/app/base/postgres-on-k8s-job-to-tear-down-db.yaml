@@ -26,7 +26,7 @@ spec:
             --username="$POSTGRES_USER" \
             --host="$DB_SERVICE_URL" \
             --port="$DB_SERVICE_PORT" \
-            db_user
+            "$CLIENT_USER"
         image: postgres:latest
         name: postgres-on-k8s-job-to-tear-down-db
         resources: {}

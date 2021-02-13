@@ -88,25 +88,25 @@ spec:
             --username="$POSTGRES_USER" \
             --host="$DB_SERVICE_URL" \
             --port="$DB_SERVICE_PORT" \
-            db_user
+            "$CLIENT_USER"
 
           PGPASSWORD="$POSTGRES_PASSWORD" psql \
             --username="$POSTGRES_USER" \
             --host="$DB_SERVICE_URL" \
             --port="$DB_SERVICE_PORT" \
             --command="
-              ALTER USER \"db_user\" WITH PASSWORD 'db_user'
+              ALTER USER \"$CLIENT_USER\" WITH PASSWORD '$CLIENT_PASSWORD'
             "
 
           PGPASSWORD="$POSTGRES_PASSWORD" createdb --echo \
             --username="$POSTGRES_USER" \
             --host="$DB_SERVICE_URL" \
             --port="$DB_SERVICE_PORT" \
-            --owner=db_user \
+            --owner="$CLIENT_USER" \
             my_db
 
-          PGPASSWORD=db_user psql \
-            --username=db_user \
+          PGPASSWORD="$CLIENT_PASSWORD" psql \
+            --username="$CLIENT_USER" \
             --host="$DB_SERVICE_URL" \
             --port="$DB_SERVICE_PORT" \
             --dbname=my_db \
@@ -131,6 +131,16 @@ spec:
             secretKeyRef:
               key: password
               name: pg-db-admin-credentials-alt
+        - name: CLIENT_USER
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: pg-db-client-credentials-alt
+        - name: CLIENT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: pg-db-client-credentials-alt
         image: postgres:latest
         name: postgres-on-k8s-job-to-set-up-db
         resources: {}
@@ -167,7 +177,7 @@ spec:
             --username="$POSTGRES_USER" \
             --host="$DB_SERVICE_URL" \
             --port="$DB_SERVICE_PORT" \
-            db_user
+            "$CLIENT_USER"
         env:
         - name: DB_SERVICE_URL
           value: postgres-on-k8s-ed
@@ -183,6 +193,16 @@ spec:
             secretKeyRef:
               key: password
               name: pg-db-admin-credentials-alt
+        - name: CLIENT_USER
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: pg-db-client-credentials-alt
+        - name: CLIENT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: pg-db-client-credentials-alt
         image: postgres:latest
         name: postgres-on-k8s-job-to-tear-down-db
         resources: {}
@@ -217,9 +237,15 @@ spec:
 
               for _ in {1..60}
               do
-                PGPASSWORD=db_user  psql -U db_user -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" -d my_db -c "
-                  INSERT INTO some_table (description) VALUES (md5(random()::text))
-                "
+                PGPASSWORD="$CLIENT_PASSWORD" psql \
+                  --user="$CLIENT_USER" \
+                  --host="$DB_SERVICE_URL" \
+                  --port="$DB_SERVICE_PORT" \
+                  --dbname=my_db \
+                  --command="
+                    INSERT INTO some_table (description) VALUES (md5(random()::text))
+                  "
+
                 sleep 1
               done
             env:
@@ -227,8 +253,16 @@ spec:
               value: postgres-on-k8s-ed
             - name: DB_SERVICE_PORT
               value: "5432"
-            - name: PASSWORD
-              value: minikube
+            - name: CLIENT_USER
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: pg-db-client-credentials-alt
+            - name: CLIENT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: pg-db-client-credentials-alt
             image: postgres:latest
             name: postgres-on-k8s-cronjob-insert-db
             resources: {}
@@ -262,10 +296,16 @@ spec:
               IFS=$'\n\t'
               set -euxo pipefail
 
-              PGPASSWORD=db_user  psql -U db_user -h "${DB_SERVICE_URL}" -p "${DB_SERVICE_PORT}" -d my_db \
-                --output index.html \
+              PGPASSWORD="$CLIENT_PASSWORD" psql \
+                --user="$CLIENT_USER" \
+                --host="$DB_SERVICE_URL" \
+                --port="$DB_SERVICE_PORT" \
+                --dbname=my_db \
+                --output=index.html \
                 --html \
-                -c "SELECT * FROM some_table"
+                --command="
+                  SELECT * FROM some_table
+                "
 
               cp index.html /usr/share/nginx/html
             env:
@@ -273,8 +313,16 @@ spec:
               value: postgres-on-k8s-ed
             - name: DB_SERVICE_PORT
               value: "5432"
-            - name: PASSWORD
-              value: minikube
+            - name: CLIENT_USER
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: pg-db-client-credentials-alt
+            - name: CLIENT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: pg-db-client-credentials-alt
             image: postgres:latest
             name: postgres-on-k8s-cronjob-copy-to-nginx
             resources: {}
